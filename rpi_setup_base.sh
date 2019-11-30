@@ -1,8 +1,6 @@
 # First boot - Base setup
 # SSH login as pi/raspberry
 # sudo run this script
-# TODO
-# - Add test files to local.tgz
 
 # set users and passwords
 echo "set password for root"
@@ -21,9 +19,7 @@ tar -xvzf /boot/local.tgz -C /home/$usrname/
 cp /boot/rpi_setup*.sh /home/$usrname/local/src/shell
 chown -R $usrname.$usrname /home/$usrname/local/
 
-# Networking - .local works with home virgin router
-# TODO
-# - Test with hostname as pinodeX.local and pinodeX.picluster.sytes.net
+# Networking
 read -p "Networking - Hostname for RPi: " piname
 echo $piname > /etc/hostname
 sed -i "s/raspberrypi/$piname.local $piname/g" /etc/hosts
