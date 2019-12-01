@@ -26,4 +26,5 @@ These instructions assume:
 ### Main setup
  - Login via SSH (created user/password) and run setup menu script as root
 <pre><code>sudo sh local/src/shell/rpi_setup_menu.sh</code></pre>
+ - Enter the username to be used for setup
  - Run System setup to remove default pi user, update system + install system/development tools
