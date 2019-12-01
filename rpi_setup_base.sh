@@ -21,7 +21,7 @@ cp /boot/rpi_setup*.sh /home/$usrname/local/src/shell
 chown -R $usrname.$usrname /home/$usrname/local/
 
 # Networking
-read -p "Networking - Hostname for RPi: " piname
+read -p "Networking - Hostname for RPi (e.g. pinode1): " piname
 echo $piname > /etc/hostname
 sed -i "s/raspberrypi/$piname.local $piname/g" /etc/hosts
 echo "127.0.0.1   $piname.local $piname" >> /etc/hosts
