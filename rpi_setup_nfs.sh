@@ -33,7 +33,7 @@ add_remote_mount()
 {
 	read -p "Remote node (integer only): " nfsrem
 	read -p "Remote directory (default = /var/nfs-export): " nfsdir
-	if [-z $nfsdir]
+	if [ -z $nfsdir ]
 	then
 		$nfsdir = "/var/nfs-export"
 	fi

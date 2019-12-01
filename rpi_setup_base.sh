@@ -35,6 +35,14 @@ sed -i 's/#PermitRootLogin\ prohibit-password/PermitRootLogin\ no/g' /etc/ssh/ss
 #rfkill unblock 0
 #ip link set wlan0 up
 
-# Reboot
-read -p "Finished base setup, press enter to reboot, then login as $usrname" input
-reboot
+# Reboot or Poweroff (if static IP setup needed on router)
+read -p "Finished base setup, press p to poweroff or r to reboot, then login as $usrname" input
+if [ $input = "p" ]
+then
+	poweroff
+elif [ $input = "r" ]
+then
+	reboot
+else
+	read -p "Continuing as default user pi is not recommended!" input
+fi

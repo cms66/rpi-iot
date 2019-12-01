@@ -5,7 +5,7 @@ show_main_menu()
 {
 	clear
 	echo "Setup Main menu \n----------"
-	echo "select setup option or x to exit \n 1) System \n 2) Hardware \n 3) NFS \n 4) SSH - Shared keys \n 5) OpenMPI \n 6) OpenCV \n 7) OpenCL \n 8) Test \n"
+	echo "select setup option or x to exit \n 1) System \n 2) Hardware \n 3) NFS \n 4) SSH - Shared keys \n 5) OpenMPI \n 6) OpenCV \n 7) OpenCL \n"
 }
 
 read -p "User Name: " usrname
@@ -22,7 +22,6 @@ while [ $n != "x" ]; do
 	    5) sh /home/$usrname/local/src/shell/rpi_setup_openmpi.sh;;
 	    6) sh /home/$usrname/local/src/shell/rpi_setup_opencv.sh;;
 	    7) sh /home/$usrname/local/src/shell/rpi_setup_opencl.sh;;
-	    8) sh /home/$usrname/local/src/shell/rpi_setup_test.sh;;
 	    *) read -p "invalid option - press enter to return to menu" errkey;;
 	esac
 	show_main_menu
