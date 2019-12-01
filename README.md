@@ -11,12 +11,11 @@ These instructions assume following a naming convention of pinodeX.local (X = in
  - If a second drive is shown (Secure Digital storage device) or "format partition" message popup then download and run MiniTool Partition Wizard (https://www.partitionwizard.com/download/v11/pw11-free.exe). Select the second drive and hide partition (= remove drive letter)
  - Rename SD card volume to PINODE + node number.
  - Download https://github.com/cms66/rpi-iot/archive/master.zip and extract files.
- - If the RPi will be using WiFi then edit wpa_supplicant.conf
+ - If the RPi will be using WiFi then edit wpa_supplicant.conf with a plain text editor (Notepad or Notepad++ from https://notepad-plus-plus.org/downloads/).
  - Copy the files to SD card
 
 ### First boot
- - Connect required hardware + boot
-Wait for power only LED
+ - Connect required hardware + boot (wait for power only LED)
  - Scan network for raspberrypi.local with Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address.
  - Login via ssh (User = pi, Password = raspberry) and run base setup script as root
 <pre><code>sudo sh /boot/rpi_setup_base.sh</code></pre> (powers off but power LED will stay on - disconnect power)
