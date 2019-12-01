@@ -15,15 +15,14 @@ These instructions assume following a naming convention of pinodeX.local (X = in
  - Copy the files to SD card
 
 ### First boot
-Connect required hardware + boot
+ - Connect required hardware + boot
 Wait for power only LED
-If doing a headless build then scan network for raspberrypi.local with Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address.
-Login via ssh (User = pi, Password = raspberry)
-Run base setup script as root
-sudo sh /boot/rpi_setup_base.sh (powers off but power LED will stay on - disconnect power)
-It is recommended to setup a static/reserved IP address on router (using MAC address noted earlier)
+ - Scan network for raspberrypi.local with Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address.
+ - Login via ssh (User = pi, Password = raspberry) and run base setup script as root
+<pre><code>sudo sh /boot/rpi_setup_base.sh</code></pre> (powers off but power LED will stay on - disconnect power)
+ - It is recommended to setup a static/reserved IP address on router (using MAC address noted earlier)
 
 ### Main setup
-Login via SSH (created user/password) and run setup menu script as root
-sudo sh local/src/shell/rpi_setup_menu.sh
-Run System setup to remove default pi user, update system + install system tools
+ - Login via SSH (created user/password) and run setup menu script as root
+<pre><code>sudo sh local/src/shell/rpi_setup_menu.sh</code></pre>
+ - Run System setup to remove default pi user, update system + install system tools
