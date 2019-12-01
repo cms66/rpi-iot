@@ -45,5 +45,5 @@ elif [ $input = "r" ]
 then
 	reboot
 else
-	read -p "Continuing as default user pi is not recommended!" input
+	read -p "Continuing as default user pi is not recommended! " input
 fi
