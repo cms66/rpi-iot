@@ -37,7 +37,7 @@ sed -i 's/#PermitRootLogin\ prohibit-password/PermitRootLogin\ no/g' /etc/ssh/ss
 #ip link set wlan0 up
 
 # Reboot or Poweroff (if static IP setup needed on router)
-read -p "Finished base setup, press p to poweroff or r to reboot, then login as $usrname" input
+read -p "Finished base setup, press p to poweroff or r to reboot, then login as $usrname \n" input
 if [ $input = "p" ]
 then
 	poweroff
