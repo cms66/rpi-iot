@@ -2,7 +2,8 @@
 # SSH login as pi/raspberry
 # sudo run this script
 
-# set users and passwords
+# setup users and passwords
+echo "Setting up security for root account and creating new user to replace the default pi user"
 echo "set password for root"
 passwd root
 # Add user with home direcory, bash shell and sudo access
