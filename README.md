@@ -6,13 +6,13 @@ More detailed instructions and information about the project are available [here
 ## Quick instructions
 These instructions assume following a naming convention of pinodeX.local (X = integer, unique for each RPi in a cluster).
 ### Prepare SD card
-Download latest lite image from https://www.raspberrypi.org/downloads/raspbian/
-Unzip and write image to micro SD card (8 GB minimum, 16 GB recommended and Class 10) with win32diskimager (https://sourceforge.net/projects/win32diskimager/)
-If a second drive is shown (Secure Digital storage device) or "format partition" message popup then download and run MiniTool Partition Wizard (https://www.partitionwizard.com/download/v11/pw11-free.exe). Select the second drive and hide partition (= remove drive letter)
-Rename SD card volume to PINODE + node number.
-Download https://github.com/cms66/rpi-iot/archive/master.zip and extract files.
-If the RPi will be using WiFi then edit wpa_supplicant.conf
-Copy the files to SD card
+ - Download latest lite image from https://www.raspberrypi.org/downloads/raspbian/
+ - Unzip and write image to micro SD card (8 GB minimum, 16 GB recommended and Class 10) with win32diskimager (https://sourceforge.net/projects/win32diskimager/)
+ - If a second drive is shown (Secure Digital storage device) or "format partition" message popup then download and run MiniTool Partition Wizard (https://www.partitionwizard.com/download/v11/pw11-free.exe). Select the second drive and hide partition (= remove drive letter)
+ - Rename SD card volume to PINODE + node number.
+ - Download https://github.com/cms66/rpi-iot/archive/master.zip and extract files.
+ - If the RPi will be using WiFi then edit wpa_supplicant.conf
+ - Copy the files to SD card
 
 ### First boot
 Connect required hardware + boot
