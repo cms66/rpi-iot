@@ -4,7 +4,9 @@ The aim of this project is to provide a set of scripts and supporting files to h
 More detailed instructions and information about the project are available [here](../../wiki/The-rpi-iot-project).
 
 ## Quick instructions
-These instructions assume following a naming convention of pinodeX.local (X = integer, unique for each RPi in a cluster).
+These instructions assume:
+ - Following a naming convention of pinodeX.local (X = integer, unique for each RPi in a cluster).
+ - Windows computer used for preparation and connection to RPi.
 ### Prepare SD card
  - Download latest lite image from https://www.raspberrypi.org/downloads/raspbian/
  - Unzip and write image to micro SD card (8 GB minimum, 16 GB recommended and Class 10) with win32diskimager (https://sourceforge.net/projects/win32diskimager/)
@@ -24,4 +26,4 @@ These instructions assume following a naming convention of pinodeX.local (X = in
 ### Main setup
  - Login via SSH (created user/password) and run setup menu script as root
 <pre><code>sudo sh local/src/shell/rpi_setup_menu.sh</code></pre>
- - Run System setup to remove default pi user, update system + install system tools
+ - Run System setup to remove default pi user, update system + install system/development tools
