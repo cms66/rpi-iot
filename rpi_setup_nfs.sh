@@ -32,11 +32,8 @@ add_local_export()
 add_remote_mount()
 {
 	read -p "Remote node (integer only): " nfsrem
-	read -p "Remote directory (default = /var/nfs-export): " nfsdir
-	#if [ -z $nfsdir ]
-	#then
-		#$nfsdir = "/var/nfs-export"
-	#fi
+	read -p "Remote directory (default = /var/nfs-export): " userdir
+	nfsdir=${userdir:="/var/nfs-export"}
 	mkdir /home/$usrname/share$nfsrem
 	chown $usrname.$usrname /home/$usrname/share$nfsrem
 	echo "pinode$nfsrem.local:$nfsdir /home/$usrname/share$nfsrem    nfs defaults" >> /etc/fstab
