@@ -36,7 +36,7 @@ sed -i 's/#PermitRootLogin\ prohibit-password/PermitRootLogin\ no/g' /etc/ssh/ss
 #rfkill unblock 0
 #ip link set wlan0 up
 
-# Reboot or Poweroff (if static IP setup needed on router)
+# Reboot or Poweroff (if static IP setup needed on router) ** TODO - fix options - defaults to poweroff
 read -p "Finished base setup, press p to poweroff or r to reboot, then login as $usrname: " input
 if [ $input = "p" ]
 then
