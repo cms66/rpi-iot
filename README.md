@@ -24,7 +24,9 @@ These instructions assume:
  - It is recommended to setup a static/reserved IP address on router (using MAC address noted earlier)
 
 ### Main setup
- - Login via SSH (created user/password) and run setup menu script as root
+ - Login via ssh (created user/password) and run setup menu script as root
 <pre><code>sudo sh local/src/shell/rpi_setup_menu.sh</code></pre>
  - Enter the username to be used for setup
  - Run System setup to remove default pi user, update system + install system/development tools
+ - Run Hardware setup and use sub menu to setup connected devices
+ - Run NFS setup to configure server or client (required for OpenMPI)
