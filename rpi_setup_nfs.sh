@@ -32,7 +32,7 @@ add_local_export()
 add_remote_mount()
 {
 	read -p "Remote node (integer only): " nfsrem
-	read -p "Remote directory (default = /var/nfs-export): " userdir
+	read -p "Full path to remote directory (press enter for default = /var/nfs-export): " userdir
 	nfsdir=${userdir:="/var/nfs-export"}
 	mkdir /home/$usrname/share$nfsrem
 	chown $usrname.$usrname /home/$usrname/share$nfsrem
