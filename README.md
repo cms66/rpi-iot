@@ -24,8 +24,9 @@ These instructions assume:
      - Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address (doesn't always pick up raspberrypi.local hostname but shows as Manufacturer = Raspberry Pi Foundation).
  - Login via ssh (User = pi, Password = raspberry) and run base setup script as root
 <pre><code>sudo sh /boot/rpi_setup_base.sh</code></pre>
-  - Poweroff (recommended for multiple RPi scenario) to setup a static/reserved IP address on router (using MAC address noted earlier) or
-  - Reboot (simple setup for a single RPi)
+  - Select option to apply changes
+      - Poweroff (recommended for multiple RPi scenario) to setup a static/reserved IP address on router (using MAC address noted earlier) or
+      - Reboot (simple setup for a single RPi)
 
 ### Main setup
  - Login via ssh (created user/password) and run setup menu script as root
