@@ -20,8 +20,8 @@ These instructions assume:
 ### First boot
  - Connect required hardware + boot (wait for power only LED)
  - Scan network for raspberrypi.local with a network scanner
- -- Angry IP Scanner (https://sourceforge.net/projects/ipscan/files/latest/download), or if setting up a static IP then
- -- Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address (doesn't always pick up raspberrypi.local hostname but shows as Manufacturer = Raspberry Pi Foundation).
+ - Angry IP Scanner (https://sourceforge.net/projects/ipscan/files/latest/download), or if setting up a static IP then
+ - Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address (doesn't always pick up raspberrypi.local hostname but shows as Manufacturer = Raspberry Pi Foundation).
  - Login via ssh (User = pi, Password = raspberry) and run base setup script as root
 <pre><code>sudo sh /boot/rpi_setup_base.sh</code></pre> (powers off but power LED will stay on - disconnect power)
  - It is recommended to setup a static/reserved IP address on router (using MAC address noted earlier)
