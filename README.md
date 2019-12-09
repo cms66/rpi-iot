@@ -22,7 +22,7 @@ These instructions assume:
  - Scan network for new RPi with a network scanner
      - Before starting RPi open Windows command prompt and run
      <pre><code>arp -a</code></pre>
-     Then repeat after RPi is connected to see new IP address
+     Then repeat after RPi is connected and compare to see new IP address
      - Angry IP Scanner (https://sourceforge.net/projects/ipscan/files/latest/download), or if setting up a static IP then
      - Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address (doesn't always pick up raspberrypi.local hostname but shows as Manufacturer = Raspberry Pi Foundation).
  - Login via ssh (User = pi, Password = raspberry) and run base setup script as root
