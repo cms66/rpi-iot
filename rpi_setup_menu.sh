@@ -4,8 +4,8 @@
 show_main_menu()
 {
 	clear
-	echo "Setup Main menu \n----------"
-	echo "select setup option or x to exit \n 1) System \n 2) Hardware \n 3) NFS \n 4) SSH - Shared keys \n 5) OpenMPI \n 6) OpenCV \n 7) OpenCL \n"
+	printf "Setup Main menu \n--------------\n"
+	printf "select setup option or x to exit \n 1) System \n 2) Hardware \n 3) NFS \n 4) SSH - Shared keys \n 5) OpenMPI \n 6) OpenCV \n 7) OpenCL \n"
 }
 
 read -p "User Name: " usrname

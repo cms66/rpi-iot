@@ -6,11 +6,11 @@
 show_hardware_menu()
 {
 	clear
-	echo "Hardware setup menu \n----------"
-	echo "select setup option or x to exit \n 1)CSI Camera \n 2)USB Camera \n 3)Sense Hat \n 4)Arduino \n 5)GPS \n 6)TFT LCD \n 7)Calibrate display \n 8)Bluetooth \n"
+	printf "Hardware setup menu \n----------"
+	printf "select setup option or x to exit \n 1) CSI Camera \n 2) USB Camera \n 3) Sense Hat \n 4) Arduino \n 5) GPS \n 6) TFT LCD \n 7) Calibrate display \n 8) Bluetooth \n 9) Robotic arm \n"
 }
 
-# CSI Camera
+# 1 CSI Camera
 setup_cam_csi()
 {
 	# Enable Camera
@@ -22,13 +22,13 @@ setup_cam_csi()
 	read -p "CSI camera setup done, press enter to return to menu" input	
 }
 
-# USB Camera
+# 2 USB Camera
 setup_cam_usb()
 {
 	read -p "USB camera setup TODO, press enter to return to menu" input
 }
 
-# Sense Hat
+# 3 Sense Hat
 setup_sense_hat()
 {
 	apt-get -y install sense-hat i2c-tools
@@ -37,13 +37,13 @@ setup_sense_hat()
 	read -p "Sense Hat setup done, press enter to return to menu" input
 }
 
-# Arduino
+# 4 Arduino
 setup_arduino()
 {
 	read -p "Arduino setup TODO, press enter to return to menu" input
 }
 
-#  GPS
+# 5 GPS
 setup_gps()
 {
 	sed -i 's/USBAUTO=\"true\"/USBAUTO=\"false\"/g' /etc/default/gpsd
@@ -58,7 +58,7 @@ setup_gps()
 	read -p "GPS setup done, press enter to return to menu" input
 }
 
-# TFT LCD display
+# 6 TFT LCD display
 setup_tft_lcd()
 {
 	git clone https://github.com/goodtft/LCD-show.git
@@ -68,7 +68,7 @@ setup_tft_lcd()
 	read -p "TFT LCD setup done, press enter to return to menu" input
 }
 
-# Calibrate display
+# 7 Calibrate display
 calib_display()
 {
 	cd LCD-show
@@ -76,12 +76,17 @@ calib_display()
 	read -p "Display calibration done, press enter to return to menu" input
 }
 
-# Bluetooth - onboard or dongle
+# 8 Bluetooth - onboard or dongle
 setup_bluetooth()
 {
 	read -p "Bluetooth setup TODO, press enter to return to menu" input
 }
 
+# 9 Robotic arm
+setup_robot_arm()
+{
+	echo 'SUBSYSTEM=="usb",ATTRS{idVendor}=="1267",ATTRS{idProduct}=="0000",MODE="0660",GROUP="multipi",SYMLINK+="robotarm%n"' >> /etc/udev/rules.d/11-usb-permissions.rules
+}
 show_hardware_menu
 read -p "Select option or x to exit to main menu: " n
 while [ $n != "x" ]; do
@@ -94,6 +99,7 @@ while [ $n != "x" ]; do
 		6) setup_tft_lcd;;
 		7) calib_display;;
 		8) setup_bluetooth;;
+		9) setup_robot_arm;;
 	    *) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_hardware_menu
