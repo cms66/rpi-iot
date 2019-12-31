@@ -3,8 +3,8 @@
 show_nfs_menu()
 {
 	clear
-	echo "NFS setup menu \n----------"
-	echo "select setup option or x to exit \n 1) Setup local Server \n 2) Add local export \n 3) Add Remote mount \n"
+	printf "NFS setup menu \n----------\n"
+	printf "select setup option or x to exit \n 1) Setup local Server \n 2) Add local export \n 3) Add Remote mount \n"
 }
 
 # Setup local Server

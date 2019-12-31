@@ -36,7 +36,7 @@ sed -i 's/#PermitRootLogin\ prohibit-password/PermitRootLogin\ no/g' /etc/ssh/ss
 #rfkill unblock 0
 #ip link set wlan0 up
 
-# Set default shell
+# Set default shell to bash
 echo "dash dash/sh boolean false" | debconf-set-selections
 DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 
