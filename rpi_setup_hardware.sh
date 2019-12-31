@@ -33,7 +33,7 @@ setup_sense_hat()
 {
 	apt-get -y install sense-hat i2c-tools
 	echo "dtparam=i2c_arm=on" >> /boot/config.txt
-	usermod -a -G i2c $usrname
+	usermod -a -G i2c, input $usrname
 	read -p "Sense Hat setup done, press enter to return to menu" input
 }
 

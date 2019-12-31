@@ -5,7 +5,7 @@ testdev="0"
 testlang="0"
 declare -a arrdev=("none" "CSI Camera" "USB Camera" "Sense hat" "Arduino" "GPS" "TFT LCD" "Bluetooth" "Robot arm")
 declare -A arrlang=([0]="none" [a]="Python 2" [b]="Python 3" [c]="C" [d]="C++")
-
+usrname=$(whoami)
 # Menu for hardware device and test language
 show_test_menu()
 {
@@ -23,11 +23,11 @@ run_test()
 	if [ $testdev != "0" ] && [ $testlang != "0" ]; then
 		case $testdev in
 			1)	case $testlang in
-					a)	python /home/multipi/local/src/python2/test_cam_csi_cap_p2.py #works
-						python /home/multipi/local/src/python2/test_cam_csi_vid_p2.py #works
+					a)	python /home/$usrname/local/src/python2/test_cam_csi_cap_p2.py #works
+						python /home/$usrname/local/src/python2/test_cam_csi_vid_p2.py #works
 						read -p "test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - completed (image and video) - press any key to continue" runtest;;
-					b)	python3 /home/multipi/local/src/python3/test_cam_csi_cap_p3.py #works
-						python3 /home/multipi/local/src/python3/test_cam_csi_vid_p3.py #works
+					b)	python3 /home/$usrname/local/src/python3/test_cam_csi_cap_p3.py #works
+						python3 /home/$usrname/local/src/python3/test_cam_csi_vid_p3.py #works
 						read -p "test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - completed (image and video) - press any key to continue" runtest;;
 					c)	read -p "TODO - test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - press any key to continue" runtest;;
 					d)	read -p "TODO - test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - press any key to continue" runtest;;
@@ -40,7 +40,8 @@ run_test()
 				esac;;
 			3)	case $testlang in
 					a)	read -p "TODO - test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - press any key to continue" runtest;;
-					b)	read -p "TODO - test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - press any key to continue" runtest;;
+					b)	python3 /home/$usrname/local/src/python3/test_sensehat_p3.py #works
+						read -p "test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - completed - press any key to continue" runtest;;
 					c)	read -p "TODO - test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - press any key to continue" runtest;;
 					d)	read -p "TODO - test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - press any key to continue" runtest;;
 				esac;;
@@ -70,7 +71,7 @@ run_test()
 				esac;;
 			8)	case $testlang in
 					a)	read -p "TODO - test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - press any key to continue" runtest;;
-					b)	python3 /home/multipi/local/src/python3/test_arm_p3.py #works
+					b)	python3 /home/$usrname/local/src/python3/test_arm_p3.py #works
 						read -p "test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - completed - press any key to continue" runtest;;
 					c)	read -p "TODO - test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - press any key to continue" runtest;;
 					d)	read -p "TODO - test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - press any key to continue" runtest;;
