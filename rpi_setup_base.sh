@@ -17,7 +17,7 @@ passwd $usrname
 echo "Creating local folders for $usrname"
 tar -xvzf /boot/local.tgz -C /home/$usrname/
 # copy build scripts to local folder + set owner to created user
-cp /boot/rpi_setup*.sh /home/$usrname/local/src/shell
+cp /boot/rpi_*.sh /home/$usrname/local/src/shell
 chown -R $usrname.$usrname /home/$usrname/local/
 
 # Networking
