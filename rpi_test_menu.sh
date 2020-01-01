@@ -6,6 +6,7 @@ testlang="0"
 declare -a arrdev=("none" "CSI Camera" "USB Camera" "Sense hat" "Arduino" "GPS" "TFT LCD" "Bluetooth" "Robot arm")
 declare -A arrlang=([0]="none" [a]="Python 2" [b]="Python 3" [c]="C" [d]="C++")
 usrname=$(whoami)
+
 # Menu for hardware device and test language
 show_test_menu()
 {

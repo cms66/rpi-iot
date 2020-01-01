@@ -3,8 +3,8 @@
 show_ssh_key_menu()
 {
 	clear
-	echo "SSH Private/Public key setup menu \n----------"
-	echo "select setup option or x to exit \n 1) Remove keys on server \n 2) Create keys on server \n 3) Add host to Server \n 4) Add"
+	printf "SSH Private/Public key setup menu \n----------------\n"
+	printf "select setup option or x to exit \n 1) Remove keys on server \n 2) Create keys on server \n 3) Add client \n 4) Add host to Server \n"
 }
 
 # 1- Remove keys on server

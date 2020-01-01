@@ -16,7 +16,7 @@ setup_cam_csi()
 	# Enable Camera
 	echo "start_x=1" >> /boot/config.txt
 	# grant access to camera for video group + add user to group
-	echo 'SUBSYSTEM=="vchiq",GROUP="video",MODE="0660"' >> /etc/udev/rules.d/10-vchiq-permissions.rules
+	echo 'SUBSYSTEM=="vchiq",GROUP="video",MODE="0660"' > /etc/udev/rules.d/10-vchiq-permissions.rules
 	usermod -a -G video $usrname
 	apt-get -y install python-picamera python3-picamera
 	read -p "CSI camera setup done, press enter to return to menu" input	
@@ -25,7 +25,12 @@ setup_cam_csi()
 # 2 USB Camera
 setup_cam_usb()
 {
-	read -p "USB camera setup TODO, press enter to return to menu" input
+	# grant access to camera for video group + add user to group
+	echo 'SUBSYSTEM=="vchiq",GROUP="video",MODE="0660"' > /etc/udev/rules.d/10-vchiq-permissions.rules
+	usermod -a -G video $usrname
+	apt-get install v4l-utils
+	echo "bcm2835-v4l2" >> /etc/modules
+	read -p "USB camera setup done, press enter to return to menu" input
 }
 
 # 3 Sense Hat
@@ -85,7 +90,7 @@ setup_bluetooth()
 # 9 Robotic arm
 setup_robot_arm()
 {
-	echo 'SUBSYSTEM=="usb",ATTRS{idVendor}=="1267",ATTRS{idProduct}=="0000",MODE="0660",GROUP="multipi",SYMLINK+="robotarm%n"' >> /etc/udev/rules.d/11-usb-permissions.rules
+	echo 'SUBSYSTEM=="usb",ATTRS{idVendor}=="1267",ATTRS{idProduct}=="0000",MODE="0660",GROUP="$usrname",SYMLINK+="robotarm%n"' >> /etc/udev/rules.d/11-usb-permissions.rules
 }
 show_hardware_menu
 read -p "Select option or x to exit to main menu: " n
