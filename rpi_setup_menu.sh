@@ -8,7 +8,7 @@ show_main_menu()
 	printf "select setup option or x to exit \n 1) System \n 2) Hardware \n 3) NFS \n 4) SSH - Shared keys \n 5) OpenMPI \n 6) OpenCV \n 7) OpenCL \n"
 }
 
-read -p "Username: " usrname
+read -p "Username for setup (you are running as root): " usrname
 export usrname
 
 show_main_menu
