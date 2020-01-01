@@ -19,6 +19,7 @@ These instructions assume:
 
 ### First boot
  - Connect required hardware + boot (wait for power only LED)
+     - USB devices (e.g. robotic Arm) should be powered off during boot
  - Scan network for new RPi with a network scanner
      - Angry IP Scanner (https://sourceforge.net/projects/ipscan/files/latest/download), or if setting up a static IP then
      - Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address (doesn't always pick up raspberrypi.local hostname but shows as Manufacturer = Raspberry Pi Foundation).
