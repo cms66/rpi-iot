@@ -33,7 +33,7 @@ These instructions assume:
  - Login via ssh (created user/password) and run setup menu script as root
 <pre><code>sudo sh local/src/shell/rpi_setup_menu.sh</code></pre>
  - Run System setup to remove default pi user, update system + install system/development tools
- - Run Hardware setup and use sub menu to setup connected devices
+ - Run Hardware setup and use sub menu to setup connected devices (multiple devices can be configured, but reboot will be needed to apply changes)
  - Run NFS setup to configure server or client (required for OpenMPI)
 
 ### Testing
