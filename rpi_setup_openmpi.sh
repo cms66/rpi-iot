@@ -2,8 +2,8 @@
 show_mpi_menu()
 {
 	clear
-	echo "MPI setup menu \n----------"
-	echo "select setup option or x to exit \n 1) Build/install - local \n 2) Build/install - server \n 3) Install - client \n"
+	printf "MPI setup menu \n----------\n"
+	printf "select setup option or x to exit \n 1) Build/install - local \n 2) Build/install - server \n 3) Install - client \n"
 }
 
 # 1 - Build/install local
