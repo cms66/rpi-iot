@@ -10,7 +10,7 @@ show_hardware_menu()
 	printf "select setup option or x to exit \n 1) CSI Camera \n 2) USB Camera \n 3) Sense Hat \n 4) Arduino \n 5) GPS \n 6) TFT LCD \n 7) Calibrate display \n 8) Bluetooth \n 9) Robotic arm \n"
 }
 
-# 1 CSI Camera
+# 1 CSI Camera - Works - requires reboot
 setup_cam_csi()
 {
 	# Enable Camera
@@ -22,7 +22,7 @@ setup_cam_csi()
 	read -p "CSI camera setup done, press enter to return to menu" input	
 }
 
-# 2 USB Camera
+# 2 USB Camera - Works - requires reboot
 setup_cam_usb()
 {
 	# grant access to camera for video group + add user to group
@@ -33,7 +33,7 @@ setup_cam_usb()
 	read -p "USB camera setup done, press enter to return to menu" input
 }
 
-# 3 Sense Hat
+# 3 Sense Hat - Works - requires reboot
 setup_sense_hat()
 {
 	apt-get -y install sense-hat i2c-tools
