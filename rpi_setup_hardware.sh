@@ -91,6 +91,8 @@ setup_bluetooth()
 setup_robot_arm()
 {
 	echo 'SUBSYSTEM=="usb",ATTRS{idVendor}=="1267",ATTRS{idProduct}=="0000",MODE="0660",GROUP="$usrname",SYMLINK+="robotarm%n"' >> /etc/udev/rules.d/11-usb-permissions.rules
+	pip install pyusb
+	pip3 install pyusb
 }
 show_hardware_menu
 read -p "Select option or x to exit to main menu: " n
