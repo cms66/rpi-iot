@@ -23,5 +23,6 @@ sed -i "s/CONF_SWAPSIZE=2048/CONF_SWAPSIZE=100/g" /etc/dphys-swapfile
 /etc/init.d/dphys-swapfile start
 cd /home/$usrname
 rm -f opencv*.zip
-rm -rf opencv-4.2.0
+rm -rf opencv-*
+rm -rf opencv_*
 read -p "OpenCV 4.2.0 - install finished, press enter to return to menu" input
