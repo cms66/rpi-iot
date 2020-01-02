@@ -11,7 +11,7 @@ These instructions assume:
 ### Prepare SD card
  - Download latest lite image from https://www.raspberrypi.org/downloads/raspbian/
  - Unzip and write image to micro SD card (8 GB minimum, 16 GB recommended and Class 10) with win32diskimager (https://sourceforge.net/projects/win32diskimager/)
- - If a second drive is shown (Secure Digital storage device) or "format partition" message popup then download and run MiniTool Partition Wizard (https://www.partitionwizard.com/download/v11/pw11-free.exe). Select the second drive and hide partition (= remove drive letter)
+ - If a second drive is shown (Secure Digital storage device) or "format partition" message popup then download and run MiniTool Partition Wizard (https://www.partitionwizard.com/download/v11/pw11-free.exe). Select the second drive and right click then select hide partition (= remove drive letter)
  - Rename SD card volume to PINODE + node number.
  - Download https://github.com/cms66/rpi-iot/archive/master.zip and extract files.
  - If the RPi will be using WiFi then edit wpa_supplicant.conf with a plain text editor (Notepad or Notepad++ from https://notepad-plus-plus.org/downloads/). 
@@ -21,7 +21,9 @@ These instructions assume:
  - Connect required hardware + boot (wait for power only LED)
      - USB devices (e.g. robotic Arm) should be powered off during boot
  - Scan network for new RPi with a network scanner
-     - Angry IP Scanner (https://sourceforge.net/projects/ipscan/files/latest/download), or if setting up a static IP then
+     - From Windows Command prompt run the following command before and after RPi is powered up, then compare results in arp.txt file to get IP and MAC address (= Physical Address).
+<pre><code>arp -a >> %USERPROFILE%\Desktop\arp.txt</code></pre>
+     - If you want a GUI then download Angry IP Scanner (https://sourceforge.net/projects/ipscan/files/latest/download), or if setting up a static IP then
      - Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address (doesn't always pick up raspberrypi.local hostname but shows as Manufacturer = Raspberry Pi Foundation).
  - Login via ssh (User = pi, Password = raspberry) and run base setup script as root
 <pre><code>sudo sh /boot/rpi_setup_base.sh</code></pre>
