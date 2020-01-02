@@ -24,8 +24,8 @@ These instructions assume:
      - From Windows Command prompt run the following command before and after RPi is powered up, then compare results in arp.txt file to get IP and MAC address (= Physical Address).
 <pre><code>arp -a >> %USERPROFILE%\Desktop\arp.txt</code></pre>
 If you want a GUI
-     - Angry IP Scanner (https://sourceforge.net/projects/ipscan/files/latest/download), or if setting up a static IP then
-     - Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address (doesn't always pick up raspberrypi.local hostname but shows as Manufacturer = Raspberry Pi Foundation).
+    - Angry IP Scanner (https://sourceforge.net/projects/ipscan/files/latest/download), or if setting up a static IP then
+    - Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address (doesn't always pick up raspberrypi.local hostname but shows as Manufacturer = Raspberry Pi Foundation).
  - Login via ssh (User = pi, Password = raspberry) and run base setup script as root
 <pre><code>sudo sh /boot/rpi_setup_base.sh</code></pre>
   - Select option to apply changes
