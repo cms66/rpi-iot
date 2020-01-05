@@ -1,6 +1,6 @@
 # OpenCV 4.2.0
 # TODO
-# - Symlink for python import
+# - Symlink for python3 import?
 # - Optimisation
 cd /home/$usrname
 wget -O opencv.zip https://github.com/opencv/opencv/archive/4.2.0.zip
