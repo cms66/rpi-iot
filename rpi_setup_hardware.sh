@@ -28,7 +28,7 @@ setup_cam_usb()
 	# grant access to camera for video group + add user to group
 	echo 'SUBSYSTEM=="vchiq",GROUP="video",MODE="0660"' > /etc/udev/rules.d/10-vchiq-permissions.rules
 	usermod -a -G video $usrname
-	apt-get install v4l-utils
+	apt-get -y install v4l-utils
 	echo "bcm2835-v4l2" >> /etc/modules
 	read -p "USB camera setup done, press enter to return to menu" input
 }
@@ -51,7 +51,7 @@ setup_arduino()
 # 5 GPS
 setup_gps()
 {
-	apt-get install gpsd gpsd-clients python-gps
+	apt-get -y install gpsd gpsd-clients python-gps
 	sed -i 's/USBAUTO=\"true\"/USBAUTO=\"false\"/g' /etc/default/gpsd
 	sed -i 's/GPSD_OPTIONS=\"\"/GPSD_OPTIONS=\"-n -G\"/g' /etc/default/gpsd
 	sed -i 's/DEVICES=\"\"/DEVICES=\"\/dev\/serial0\"/g' /etc/default/gpsd
