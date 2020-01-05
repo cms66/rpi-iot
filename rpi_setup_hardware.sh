@@ -53,8 +53,8 @@ setup_gps()
 {
 	apt-get install gpsd gpsd-clients python-gps
 	sed -i 's/USBAUTO=\"true\"/USBAUTO=\"false\"/g' /etc/default/gpsd
-	sed -i 's/GPSD_OPTIONS=\"\"/GPSD_OPTIONS=\"-n\"/g' /etc/default/gpsd
-	sed -i 's/DEVICES=\"\"/DEVICES=\"\/dev\/ttyAMA0\"/g' /etc/default/gpsd
+	sed -i 's/GPSD_OPTIONS=\"\"/GPSD_OPTIONS=\"-n -G\"/g' /etc/default/gpsd
+	sed -i 's/DEVICES=\"\"/DEVICES=\"\/dev\/serial0\"/g' /etc/default/gpsd
 	sed -i 's/console=serial0,115200 //g' /boot/cmdline.txt
 	echo "pps-gpio" >> /etc/modules
 	echo "enable_uart=1" >> /boot/config.txt
