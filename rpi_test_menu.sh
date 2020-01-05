@@ -53,7 +53,8 @@ run_test()
 					d)	read -p "TODO - test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - press any key to continue" runtest;;
 				esac;;
 			5)	case $testlang in
-					a)	read -p "TODO - test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - press any key to continue" runtest;;
+					a)	python2 /home/$usrname/local/src/python2/test_gps_p2.py #works
+						read -p "test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - completed - press any key to continue" runtest;;
 					b)	read -p "TODO - test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - press any key to continue" runtest;;
 					c)	read -p "TODO - test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - press any key to continue" runtest;;
 					d)	read -p "TODO - test ${arrdev[$testdev]} in ${arrlang[$testlang]} language - press any key to continue" runtest;;
