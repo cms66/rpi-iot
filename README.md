@@ -21,7 +21,7 @@ These instructions assume:
  - Connect required hardware + boot (wait for power only LED)
      - USB devices (e.g. robotic Arm) should be powered off during boot
  - Scan network for new RPi with a network scanner
-     - From Windows Command prompt run the following command before and after RPi is powered up, then compare results in arp.txt file to get IP and MAC address (= Physical Address).
+     - From Windows Command prompt run the following command before and after RPi is powered up, then compare results in arp.txt file (saved to Desktop) to get IP and MAC address (= Physical Address).
         <pre><code>arp -a >> %USERPROFILE%\Desktop\arp.txt</code></pre>
     If you want a GUI:
      - Angry IP Scanner (https://sourceforge.net/projects/ipscan/files/latest/download), or if setting up a static IP then
