@@ -29,6 +29,8 @@ setup_cam_usb()
 	echo 'SUBSYSTEM=="vchiq",GROUP="video",MODE="0660"' > /etc/udev/rules.d/10-vchiq-permissions.rules
 	usermod -a -G video $usrname
 	apt-get -y install v4l-utils
+	pip install v4l2
+	pip3 install v4l2
 	echo "bcm2835-v4l2" >> /etc/modules
 	read -p "USB camera setup done, press enter to return to menu" input
 }
