@@ -17,7 +17,7 @@ These instructions assume:
  - Rename SD card volume to PINODE + node number.
  - Download https://github.com/cms66/rpi-iot/archive/master.zip and extract files.
  - If the RPi will be using WiFi then edit wpa_supplicant.conf with a plain text editor (Notepad or Notepad++ from https://notepad-plus-plus.org/downloads/). 
- - Copy the files to SD card (only copy wpa_supplicant.conf if using WiFi rather than a wired connection).
+ - Copy the files to SD card (only copy wpa_supplicant.conf if using WiFi rather than a wired connection). Just the files should be copied, not the rpi-iot folder.
 
 ### First boot
  - Connect required hardware + boot (wait for power only LED)
