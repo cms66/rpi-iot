@@ -5,7 +5,7 @@ More detailed instructions and information about the project are available [here
 
 ## Quick instructions
 These instructions assume:
- - Following a naming convention of pinodeX.local (X = integer, unique for each RPi in a cluster).
+ - Following a naming convention of pinodeX (X = integer, unique for each RPi in a cluster).
  - Windows computer used for preparation and connection to RPi.
  - Headless build (i.e no monitor/keyboard connected) so setup via ssh.
 ### Prepare SD card
