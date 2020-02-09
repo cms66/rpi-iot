@@ -7,7 +7,7 @@ show_hardware_menu()
 {
 	clear
 	printf "Hardware setup menu \n----------"
-	printf "select setup option or x to exit \n 1) CSI Camera \n 2) USB Camera \n 3) Sense Hat \n 4) Arduino \n 5) GPS \n 6) TFT LCD \n 7) Calibrate display \n 8) Bluetooth \n 9) Robotic arm \n"
+	printf "select setup option or x to exit \n 1) CSI Camera \n 2) USB Camera \n 3) Sense Hat \n 4) Arduino - USB \n 5) Arduino I2C \n 6) GPS \n 7) TFT LCD \n 8) Calibrate display \n 9) Bluetooth \n 10) Robotic arm \n"
 }
 
 # 1 CSI Camera - Works - requires reboot
@@ -44,13 +44,23 @@ setup_sense_hat()
 	read -p "Sense Hat setup done, press enter to return to menu" input
 }
 
-# 4 Arduino
-setup_arduino()
+# 4 Arduino - USB
+setup_arduino_usb()
 {
-	read -p "Arduino setup TODO, press enter to return to menu" input
+	usermod -a -G dialout multipi
+	pip install pyserial
+	pip3 install pyserial
+	apt-get install arduino-core arduino-mk
+	read -p "Arduino USB setup done, press enter to return to menu" input
 }
 
-# 5 GPS
+# 5 Arduino - I2C
+setup_arduino_i2c()
+{
+	read -p "Arduino I2C setup TODO, press enter to return to menu" input
+}
+
+# 6 GPS
 setup_gps()
 {
 	apt-get -y install gpsd gpsd-clients python-gps
@@ -66,7 +76,7 @@ setup_gps()
 	read -p "GPS setup done, press enter to return to menu" input
 }
 
-# 6 TFT LCD display
+# 7 TFT LCD display
 setup_tft_lcd()
 {
 	git clone https://github.com/goodtft/LCD-show.git
@@ -76,7 +86,7 @@ setup_tft_lcd()
 	read -p "TFT LCD setup done, press enter to return to menu" input
 }
 
-# 7 Calibrate display
+# 8 Calibrate display
 calib_display()
 {
 	cd LCD-show
@@ -84,13 +94,13 @@ calib_display()
 	read -p "Display calibration done, press enter to return to menu" input
 }
 
-# 8 Bluetooth - onboard or dongle
+# 9 Bluetooth - onboard or dongle
 setup_bluetooth()
 {
 	read -p "Bluetooth setup TODO, press enter to return to menu" input
 }
 
-# 9 Robotic arm
+# 10 Robotic arm
 setup_robot_arm()
 {
 	echo 'SUBSYSTEM=="usb",ATTRS{idVendor}=="1267",ATTRS{idProduct}=="0000",MODE="0660",GROUP="$usrname",SYMLINK+="robotarm%n"' >> /etc/udev/rules.d/11-usb-permissions.rules
@@ -101,15 +111,16 @@ show_hardware_menu
 read -p "Select option or x to exit to main menu: " n
 while [ $n != "x" ]; do
 	case $n in
-	    1) setup_cam_csi;;
-	    2) setup_cam_usb;;
-	    3) setup_sense_hat;;
-	    4) setup_arduino;;
-	    5) setup_gps;;
-		6) setup_tft_lcd;;
-		7) calib_display;;
-		8) setup_bluetooth;;
-		9) setup_robot_arm;;
+		1) setup_cam_csi;;
+		2) setup_cam_usb;;
+		3) setup_sense_hat;;
+		4) setup_arduino_usb;;
+		5) setup_arduino_i2c;;
+		6) setup_gps;;
+		7) setup_tft_lcd;;
+		8) calib_display;;
+		9) setup_bluetooth;;
+		10) setup_robot_arm;;
 	    *) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_hardware_menu
