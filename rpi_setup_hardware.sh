@@ -121,7 +121,7 @@ while [ $n != "x" ]; do
 		8) calib_display;;
 		9) setup_bluetooth;;
 		10) setup_robot_arm;;
-	    *) read -p "invalid option - press enter to continue" errkey;;
+		*) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_hardware_menu
 	read -p "Select option or x to exit to main menu: " n
