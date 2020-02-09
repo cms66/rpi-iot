@@ -44,7 +44,7 @@ setup_sense_hat()
 	read -p "Sense Hat setup done, press enter to return to menu" input
 }
 
-# 4 Arduino - USB
+# 4 Arduino - USB - Works
 setup_arduino_usb()
 {
 	usermod -a -G dialout multipi
