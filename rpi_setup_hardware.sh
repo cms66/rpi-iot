@@ -50,7 +50,7 @@ setup_arduino_usb()
 	usermod -a -G dialout multipi
 	pip install pyserial
 	pip3 install pyserial
-	apt-get install arduino-core arduino-mk
+	apt-get -y install arduino-core arduino-mk
 	read -p "Arduino USB setup done, press enter to return to menu" input
 }
 
