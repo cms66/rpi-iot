@@ -1,5 +1,5 @@
 # The rpi-iot project
-The aim of this project is to provide a set of scripts and supporting files to help with initial setup and security of a Raspberry Pi (using the latest Raspbian image, with a focus on the lite version). After initial setup there is a menu based system for extending capabilities including additional hardware (GPIO hats, camera etc.), image processing and for users with multiple RPi's, network file sharing and setup of a cluster of RPi's for parallel processing (targeted at home/school use for IoT).
+The aim of this project is to provide a set of scripts and supporting files to help with initial setup and security of a Raspberry Pi (using the latest Raspbian image, with a focus on the lite version). After initial setup there is a menu based system for extending capabilities including additional hardware (GPIO hats, camera etc.), image processing and for users with multiple RPi's, network file sharing and setup of a cluster of RPi's for parallel processing (targeted at home/school use for IoT and AI projects).
 
 More detailed instructions and information about the project are available [here](../../wiki/The-rpi-iot-project).
 
@@ -45,4 +45,4 @@ These instructions assume:
  - Hardware can be tested in various languages using the test menu
  <pre><code>sh local/src/shell/rpi_test_menu.sh</code></pre>
  - Not all device/language combinations will be available.
- - If using WiFi you can modify your networks/details by creating an updated wpa_supplicant.conf file and copying to SD card from Windows. On next boot of the RPi, the new configuration file will be moved to replace the existing configuration file.
+ - If using WiFi you can modify your networks/details by creating an updated wpa_supplicant.conf file and copying to SD card from Windows. On next boot of the RPi, the new configuration file will be moved to replace the existing configuration file and should connect to the new or modified network.
