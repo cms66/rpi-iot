@@ -19,6 +19,7 @@ setup_local_server()
 	echo "/var/nfs-export /home/$usrname/share$pinum    none	bind	0	0" >> /etc/fstab
 	exportfs -ra
 	mount -a
+	ufs allow NFS
 	read -p "NFS Server setup done, press enter to return to menu" input
 }
 
