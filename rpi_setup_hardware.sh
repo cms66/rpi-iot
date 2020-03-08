@@ -47,7 +47,7 @@ setup_sense_hat()
 # 4 Arduino - USB - Works
 setup_arduino_usb()
 {
-	usermod -a -G dialout multipi
+	usermod -a -G dialout $usrname
 	pip install pyserial
 	pip3 install pyserial
 	apt-get -y install arduino-core arduino-mk
