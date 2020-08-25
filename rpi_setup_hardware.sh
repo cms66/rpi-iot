@@ -7,7 +7,7 @@ show_hardware_menu()
 {
 	clear
 	printf "Hardware setup menu \n----------"
-	printf "select setup option or x to exit \n 1) CSI Camera \n 2) USB Camera \n 3) Sense Hat \n 4) Arduino - USB \n 5) Arduino I2C \n 6) GPS \n 7) TFT LCD \n 8) Calibrate display \n 9) Bluetooth \n 10) Robotic arm \n"
+	printf "select setup option or x to exit \n 1) CSI Camera \n 2) USB Camera \n 3) Sense Hat \n 4) Arduino - USB \n 5) Arduino I2C \n 6) GPS \n 7) TFT LCD \n 8) Calibrate display \n 9) Bluetooth \n 10) Robotic arm \n 11) DVB TV Hat \n"
 }
 
 # 1 CSI Camera - Works - requires reboot
@@ -107,6 +107,14 @@ setup_robot_arm()
 	pip install pyusb
 	pip3 install pyusb
 }
+
+# DVB TV Hat
+setup_dvb_tv()
+{
+	apt-get -y install tvheadend
+	read -p "DVB TV Hat setup done, press enter to return to menu" input
+}
+
 show_hardware_menu
 read -p "Select option or x to exit to main menu: " n
 while [ $n != "x" ]; do
@@ -121,6 +129,7 @@ while [ $n != "x" ]; do
 		8) calib_display;;
 		9) setup_bluetooth;;
 		10) setup_robot_arm;;
+		11) setup_dvb_tv;;
 		*) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_hardware_menu
