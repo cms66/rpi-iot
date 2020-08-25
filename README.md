@@ -13,7 +13,7 @@ These instructions assume:
  - Unzip and write image to micro SD card (8 GB minimum, 16 GB recommended and Class 10) with win32diskimager (https://sourceforge.net/projects/win32diskimager/)
  - If a second drive is shown (Secure Digital storage device) or "format partition" message popup then
      - DO NOT click OK to format SD card
-     - Remove drive letterDownload and run MiniTool Partition Wizard (https://www.partitionwizard.com/download/v11/pw11-free.exe). Select the second drive and right click then select hide partition (= remove drive letter)
+     - Remove drive letter. Download and run MiniTool Partition Wizard (https://www.partitionwizard.com/download/v11/pw11-free.exe). Select the second drive and right click then select hide partition (= remove drive letter)
  - Rename SD card volume to PINODE + node number.
  - Download https://github.com/cms66/rpi-iot/archive/master.zip and extract files.
  - If the RPi will be using WiFi then edit wpa_supplicant.conf with a plain text editor (Notepad or Notepad++ from https://notepad-plus-plus.org/downloads/).
