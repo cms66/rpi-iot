@@ -112,6 +112,7 @@ setup_robot_arm()
 setup_dvb_tv()
 {
 	apt-get -y install tvheadend
+	ufw enable 9981
 	read -p "DVB TV Hat setup done, press enter to return to menu" input
 }
 
