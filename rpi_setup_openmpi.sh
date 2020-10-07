@@ -1,4 +1,4 @@
-# OpenMPI 4.0.4
+# OpenMPI 4.0.5
 show_mpi_menu()
 {
 	clear
@@ -10,30 +10,30 @@ show_mpi_menu()
 install_local()
 {
 	cd /home/$usrname
-	wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.4.tar.gz
-	tar -xzf openmpi-4.0.4.tar.gz
-	cd openmpi-4.0.4
+	wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.5.tar.gz
+	tar -xzf openmpi-4.0.5.tar.gz
+	cd openmpi-4.0.5
 	./configure
 	make -j4 all
 	make install
 	ldconfig
 	cd /home/$usrname
-	rm -rf openmpi-4.0.4
-	rm -rf openmpi-4.0.4.tar.gz
+	rm -rf openmpi-4.0.5
+	rm -rf openmpi-4.0.5.tar.gz
 	mpirun --version
-	read -p "OpenMPI 4.0.4 - Local install finished, press enter to return to menu" input
+	read -p "OpenMPI 4.0.5 - Local install finished, press enter to return to menu" input
 }
 
 # 2- Build/install on server
 install_server()
 {
-	read -p "OpenMPI 4.0.4 - Server install TODO, press enter to return to menu" input
+	read -p "OpenMPI 4.0.5 - Server install TODO, press enter to return to menu" input
 }
 
 # 3- Install to run from server
 install_client()
 {
-	read -p "OpenMPI 4.0.4 - Client install TODO, press enter to return to menu" input
+	read -p "OpenMPI 4.0.5 - Client install TODO, press enter to return to menu" input
 }
 
 show_mpi_menu
