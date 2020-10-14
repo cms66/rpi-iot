@@ -1,6 +1,7 @@
 # OpenCV 4.4.0
 # TODO
 # - Optimisation
+# - Set make cores according to RPi model
 cd /home/$usrname
 wget -O opencv.zip https://github.com/opencv/opencv/archive/4.4.0.zip
 unzip opencv.zip
