@@ -1,7 +1,7 @@
 # Hardware setup
 # TODO
 # - Check for attached devices and configs for previous devices
-# - 
+# - Enable port on firewall for camera streams
 
 show_hardware_menu()
 {
