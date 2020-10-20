@@ -1,7 +1,7 @@
 # Hardware setup
 # TODO
 # - Check for attached devices and configs for previous devices
-# - Enable port on firewall for camera streams
+# - Enable port on firewall for multiple camera streams
 
 show_hardware_menu()
 {
@@ -19,6 +19,11 @@ setup_cam_csi()
 	echo 'SUBSYSTEM=="vchiq",GROUP="video",MODE="0660"' > /etc/udev/rules.d/10-vchiq-permissions.rules
 	usermod -a -G video $usrname
 	apt-get -y install python-picamera python3-picamera
+	# Set firewall rule - assumes pinodeX numbering with port 8080 + node number e.g pinode1 = port 8081
+	hname=$(hostname)
+	fport=$(((${hname//[^0-9]/}) + 8080))
+	ufw allow $fport
+	
 	read -p "CSI camera setup done, press enter to return to menu" input	
 }
 
@@ -32,6 +37,10 @@ setup_cam_usb()
 	pip install v4l2
 	pip3 install v4l2
 	echo "bcm2835-v4l2" >> /etc/modules
+	# Set firewall rule - assumes pinodeX numbering with port 8080 + node number e.g pinode1 = port 8081
+	hname=$(hostname)
+	fport=$(((${hname//[^0-9]/}) + 8080))
+	ufw allow $fport
 	read -p "USB camera setup done, press enter to return to menu" input
 }
 
