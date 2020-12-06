@@ -50,6 +50,12 @@ setup_sense_hat()
 	apt-get -y install sense-hat i2c-tools
 	echo "dtparam=i2c_arm=on" >> /boot/config.txt
 	usermod -a -G i2c,input,video $usrname
+	# Install cli calibration
+	wget -O RTIMULib.zip https://github.com/RPi-Distro/RTIMULib/archive/master.zip
+	unzip RTIMULib.zip
+	cd RTIMULib-master/Linux/RTIMULibCal
+	make
+	make install
 	read -p "Sense Hat setup done, press enter to return to menu" input
 }
 
@@ -117,7 +123,7 @@ setup_robot_arm()
 	pip3 install pyusb
 }
 
-# DVB TV Hat
+# 11 DVB TV Hat
 setup_dvb_tv()
 {
 	apt-get -y install tvheadend
