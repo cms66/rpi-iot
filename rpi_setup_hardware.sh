@@ -7,7 +7,7 @@ show_hardware_menu()
 {
 	clear
 	printf "Hardware setup menu \n----------"
-	printf "select setup option or x to exit \n 1) CSI Camera \n 2) USB Camera \n 3) Sense Hat \n 4) Arduino - USB \n 5) Arduino I2C \n 6) GPS \n 7) TFT LCD \n 8) Calibrate display \n 9) Bluetooth \n 10) Robotic arm \n 11) DVB TV Hat \n"
+	printf "select setup option or x to exit \n 1) CSI Camera \n 2) USB Camera \n 3) Sense Hat \n 4) Calibrate Sense Hat \n 5) Arduino - USB \n 6) Arduino I2C \n 7) GPS \n 8) TFT LCD \n 9) Calibrate display \n 10) Bluetooth \n 11) Robotic arm \n 12) DVB TV Hat \n"
 }
 
 # 1 CSI Camera - Works - requires reboot
@@ -56,10 +56,22 @@ setup_sense_hat()
 	cd RTIMULib-master/Linux/RTIMULibCal
 	make
 	make install
+	cd /home/$usrname
+	rm -rf RTIMULib*
 	read -p "Sense Hat setup done, press enter to return to menu" input
 }
 
-# 4 Arduino - USB - Works
+# 4 Calibrate Sense Hat
+calib_sense_hat()
+{
+	RTIMULibCal
+	rm /home/$usrname/.config/sense_hat/RTIMULib.ini
+	rm /root/RTEllipsoidFit//RTIMULib.ini
+	mv -f RTIMULib.ini /etc
+	read -p "Sense Hat calibration done, press enter to return to menu" input
+}
+
+# 5 Arduino - USB - Works
 setup_arduino_usb()
 {
 	usermod -a -G dialout $usrname
@@ -69,13 +81,13 @@ setup_arduino_usb()
 	read -p "Arduino USB setup done, press enter to return to menu" input
 }
 
-# 5 Arduino - I2C
+# 6 Arduino - I2C
 setup_arduino_i2c()
 {
 	read -p "Arduino I2C setup TODO, press enter to return to menu" input
 }
 
-# 6 GPS
+# 7 GPS
 setup_gps()
 {
 	apt-get -y install gpsd gpsd-clients python-gps
@@ -91,7 +103,7 @@ setup_gps()
 	read -p "GPS setup done, press enter to return to menu" input
 }
 
-# 7 TFT LCD display
+# 8 TFT LCD display
 setup_tft_lcd()
 {
 	git clone https://github.com/goodtft/LCD-show.git
@@ -101,7 +113,7 @@ setup_tft_lcd()
 	read -p "TFT LCD setup done, press enter to return to menu" input
 }
 
-# 8 Calibrate display
+# 9 Calibrate display
 calib_display()
 {
 	cd LCD-show
@@ -109,13 +121,13 @@ calib_display()
 	read -p "Display calibration done, press enter to return to menu" input
 }
 
-# 9 Bluetooth - onboard or dongle
+# 10 Bluetooth - onboard or dongle
 setup_bluetooth()
 {
 	read -p "Bluetooth setup TODO, press enter to return to menu" input
 }
 
-# 10 Robotic arm
+# 11 Robotic arm
 setup_robot_arm()
 {
 	echo 'SUBSYSTEM=="usb",ATTRS{idVendor}=="1267",ATTRS{idProduct}=="0000",MODE="0660",GROUP="$usrname",SYMLINK+="robotarm%n"' >> /etc/udev/rules.d/11-usb-permissions.rules
@@ -123,7 +135,7 @@ setup_robot_arm()
 	pip3 install pyusb
 }
 
-# 11 DVB TV Hat
+# 12 DVB TV Hat
 setup_dvb_tv()
 {
 	apt-get -y install tvheadend
@@ -138,14 +150,15 @@ while [ $n != "x" ]; do
 		1) setup_cam_csi;;
 		2) setup_cam_usb;;
 		3) setup_sense_hat;;
-		4) setup_arduino_usb;;
-		5) setup_arduino_i2c;;
-		6) setup_gps;;
-		7) setup_tft_lcd;;
-		8) calib_display;;
-		9) setup_bluetooth;;
-		10) setup_robot_arm;;
-		11) setup_dvb_tv;;
+		4) calib_sense_hat;;
+		5) setup_arduino_usb;;
+		6) setup_arduino_i2c;;
+		7) setup_gps;;
+		8) setup_tft_lcd;;
+		9) calib_display;;
+		10) setup_bluetooth;;
+		11) setup_robot_arm;;
+		12) setup_dvb_tv;;
 		*) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_hardware_menu
