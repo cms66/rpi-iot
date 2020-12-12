@@ -58,7 +58,7 @@ setup_sense_hat()
 	make install
 	cd /home/$usrname
 	rm -rf RTIMULib*
-	read -p "Sense Hat setup done, press enter to return to menu" input
+	read -p "Sense Hat setup done, it is recommended to calibrate the sense hat to improve accuracy. Press enter to return to menu" input
 }
 
 # 4 Calibrate Sense Hat
