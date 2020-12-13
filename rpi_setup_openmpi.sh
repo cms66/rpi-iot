@@ -14,7 +14,15 @@ install_local()
 	tar -xzf openmpi-4.0.5.tar.gz
 	cd openmpi-4.0.5
 	./configure
-	make -j4 all
+	cores=$(nproc)
+	if [ $cores -gt 1 ]
+	then
+		((cores=$cores-1))
+	else
+		cores=1
+	fi
+	echo "cores for make: $cores"
+	make -j$cores all
 	make install
 	ldconfig
 	cd /home/$usrname
