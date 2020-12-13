@@ -61,7 +61,7 @@ setup_sense_hat()
 	read -p "Sense Hat setup done, it is recommended to calibrate the sense hat to improve accuracy, this can be done now or later from the Hardware menu. Press y to calibrate now or enter to return to menu" input
 	if [ X$input = X"y" ]
 	then
-		calib_sense_hat()
+		calib_sense_hat
 	else
 	fi
 }
