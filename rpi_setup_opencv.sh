@@ -16,7 +16,14 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_
 sed -i "s/CONF_SWAPSIZE=100/CONF_SWAPSIZE=2048/g" /etc/dphys-swapfile
 /etc/init.d/dphys-swapfile stop
 /etc/init.d/dphys-swapfile start
-make
+cores=$(nproc)
+if [ $cores -gt 1 ]
+then
+	((cores=$cores-1))
+else
+	cores=1
+fi
+make -j$cores
 make install
 ldconfig
 sed -i "s/CONF_SWAPSIZE=2048/CONF_SWAPSIZE=100/g" /etc/dphys-swapfile
