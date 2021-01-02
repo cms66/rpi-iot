@@ -1,4 +1,4 @@
-# OpenMPI 4.0.5
+# OpenMPI 4.1.0
 show_mpi_menu()
 {
 	clear
@@ -10,9 +10,9 @@ show_mpi_menu()
 install_local()
 {
 	cd /home/$usrname
-	wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.5.tar.gz
-	tar -xzf openmpi-4.0.5.tar.gz
-	cd openmpi-4.0.5
+	wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.0.tar.gz
+	tar -xzf openmpi-4.1.0.tar.gz
+	cd openmpi-4.1.0
 	./configure
 	cores=$(nproc)
 	if [ $cores -gt 1 ]
@@ -26,10 +26,9 @@ install_local()
 	make install
 	ldconfig
 	cd /home/$usrname
-	rm -rf openmpi-4.0.5
-	rm -rf openmpi-4.0.5.tar.gz
+	rm -rf openmpi*
 	mpirun --version
-	read -p "OpenMPI 4.0.5 - Local install finished, press enter to return to menu" input
+	read -p "OpenMPI 4.1.0 - Local install finished, press enter to return to menu" input
 }
 
 # 2- Build/install on server
