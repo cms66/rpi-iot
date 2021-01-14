@@ -7,7 +7,7 @@ show_hardware_menu()
 {
 	clear
 	printf "Hardware setup menu \n----------"
-	printf "select setup option or x to exit \n 1) CSI Camera \n 2) USB Camera \n 3) Sense Hat \n 4) Calibrate Sense Hat \n 5) Arduino - USB \n 6) Arduino I2C \n 7) GPS \n 8) TFT LCD \n 9) Calibrate display \n 10) Bluetooth \n 11) Robotic arm \n 12) DVB TV Hat \n"
+	printf "select setup option or x to exit \n 1) CSI Camera \n 2) USB Camera \n 3) Sense Hat \n 4) Calibrate Sense Hat \n 5) Arduino - USB \n 6) Arduino I2C \n 7) GPS \n 8) TFT LCD \n 9) Calibrate display \n 10) Bluetooth \n 11) Robotic arm \n 12) DVB TV Hat \n 13) Audio (for Desktop image) \n"
 }
 
 # 1 CSI Camera - Works - requires reboot
@@ -143,6 +143,13 @@ setup_dvb_tv()
 	read -p "DVB TV Hat setup done, press enter to return to menu" input
 }
 
+# 13 Audio for Desktop image
+setup_audio_desktop()
+{
+	apt-get -y install pavucontrol pulseaudio-utils
+	read -p "Audio setup done, press enter to return to menu" input
+}
+
 show_hardware_menu
 read -p "Select option or x to exit to main menu: " n
 while [ $n != "x" ]; do
@@ -159,6 +166,7 @@ while [ $n != "x" ]; do
 		10) setup_bluetooth;;
 		11) setup_robot_arm;;
 		12) setup_dvb_tv;;
+		13) setup_audio_desktop;;
 		*) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_hardware_menu
