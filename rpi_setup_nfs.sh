@@ -1,5 +1,7 @@
 # NFS
-# 
+# TODO
+# Automount not working with Desktop image
+
 show_nfs_menu()
 {
 	clear
