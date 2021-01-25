@@ -7,7 +7,7 @@ show_hardware_menu()
 {
 	clear
 	printf "Hardware setup menu \n----------"
-	printf "select setup option or x to exit \n 1) CSI Camera \n 2) USB Camera \n 3) Sense Hat \n 4) Calibrate Sense Hat \n 5) Arduino - USB \n 6) Arduino I2C \n 7) GPS \n 8) TFT LCD \n 9) Calibrate display \n 10) Bluetooth \n 11) Robotic arm \n 12) DVB TV Hat \n 13) Audio (for Desktop image) \n"
+	printf "select setup option or x to exit \n 1) CSI Camera \n 2) USB Camera \n 3) Sense Hat \n 4) Calibrate Sense Hat \n 5) Arduino - USB \n 6) Arduino I2C \n 7) GPS \n 8) TFT LCD \n 9) Calibrate display \n 10) Bluetooth \n 11) Robotic arm \n 12) DVB TV Hat \n 13) Audio (for Desktop image) \n 14) Arduino Libraries \n"
 }
 
 # 1 CSI Camera - Works - requires reboot
@@ -150,6 +150,27 @@ setup_audio_desktop()
 	read -p "Audio setup done, press enter to return to menu" input
 }
 
+# 1 Arduino Libraries
+setup_arduino_libs()
+{
+	# Install libraries to /usr/share/arduino/libraries/
+	wget -O protothreads.zip https://roboticsbackend.com/wp-content/uploads/2019/06/pt.zip
+	unzip protothreads.zip -d /usr/share/arduino/libraries/
+	rm protothreads.zip
+	wget -O NewPing.zip https://bitbucket.org/teckel12/arduino-new-ping/downloads/NewPing_v1.9.1.zip
+	unzip NewPing.zip -d /usr/share/arduino/libraries/
+	rm -f NewPing.zip
+	wget -O AccelStepper.zip https://github.com/waspinator/AccelStepper/archive/master.zip
+	unzip AccelStepper.zip -d /usr/share/arduino/libraries/
+	mv /usr/share/arduino/libraries/AccelStepper-master /usr/share/arduino/libraries/AccelStepper
+	rm -f AccelStepper.zip
+	wget -O TinyGPSPlus.zip https://github.com/mikalhart/TinyGPSPlus/archive/v1.0.2b.zip
+	unzip TinyGPSPlus.zip -d /usr/share/arduino/libraries/
+	mv /usr/share/arduino/libraries/TinyGPSPlus-1.0.2b /usr/share/arduino/libraries/TinyGPS++
+	rm -f TinyGPSPlus.zip
+	read -p "Arduino Libraries setup done, press enter to return to menu" input
+}
+
 show_hardware_menu
 read -p "Select option or x to exit to main menu: " n
 while [ $n != "x" ]; do
@@ -167,6 +188,7 @@ while [ $n != "x" ]; do
 		11) setup_robot_arm;;
 		12) setup_dvb_tv;;
 		13) setup_audio_desktop;;
+		14) setup_arduino_libs;;
 		*) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_hardware_menu
