@@ -48,7 +48,7 @@ setup_cam_usb()
 setup_sense_hat()
 {
 	apt-get -y install sense-hat i2c-tools
-	echo "dtparam=i2c_arm=on" >> /boot/config.txt
+	sed -i 's/#dtparam=i2c_arm=on/dtparam=i2c_arm=on/g' /boot/config.txt
 	usermod -a -G i2c,input,video $usrname
 	# Install cli calibration
 	wget -O RTIMULib.zip https://github.com/RPi-Distro/RTIMULib/archive/master.zip
@@ -174,8 +174,14 @@ setup_arduino_libs()
 # 15 Pressure sensor (MPL3115A2)
 setup_pressure_sensor()
 {
-	read -p "Pressure sensor setup TODO, press enter to return to menu" input
+	apt-get -y install python-smbus python3-smbus i2c-tools
+	usermod -a -G i2c $usrname
+	echo "i2c-bcm2708" >> /etc/modules
+	echo "i2c-dev" >> /etc/modules
+	sed -i 's/#dtparam=i2c_arm=on/dtparam=i2c_arm=on/g' /boot/config.txt
+	read -p "Pressure sensor setup done, press enter to return to menu" input
 }
+
 show_hardware_menu
 read -p "Select option or x to exit to main menu: " n
 while [ $n != "x" ]; do
@@ -200,5 +206,6 @@ while [ $n != "x" ]; do
 	show_hardware_menu
 	read -p "Select option or x to exit to main menu: " n
 done
+
 
 
