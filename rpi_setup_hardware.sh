@@ -3,6 +3,7 @@
 # - Check for attached devices and configs for previous devices
 # - Enable port on firewall for multiple camera streams
 # - Check RPi model for GPS setup
+# - Create setup options for GPs using UART/I2C/SPI
 
 show_hardware_menu()
 {
