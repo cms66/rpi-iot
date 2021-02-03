@@ -4,6 +4,7 @@
 # - Enable port on firewall for multiple camera streams
 # - Check RPi model for GPS setup
 # - Create setup options for GPS using UART/I2C/SPI
+# - Use GPIO pins for fan/cooling
 
 show_hardware_menu()
 {
