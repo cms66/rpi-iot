@@ -1,6 +1,7 @@
 # NFS
 # TODO
-# Automount not working with Desktop image
+# Automount not working with Desktop image - Use options nfs defaults,user,exec,noauto,x-systemd.automount 0 0
+
 
 show_nfs_menu()
 {
