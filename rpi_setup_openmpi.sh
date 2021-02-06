@@ -34,7 +34,27 @@ install_local()
 # 2- Build/install on server
 install_server()
 {
-	read -p "OpenMPI 4.0.5 - Server install TODO, press enter to return to menu" input
+	cd /home/$usrname
+	mkdir /opt/openmpi-4.1.0
+	wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.0.tar.gz
+	tar -xzf openmpi-4.1.0.tar.gz
+	cd openmpi-4.1.0
+	./configure --prefix=/opt/openmpi-4.1.0
+	cores=$(nproc)
+	if [ $cores -gt 1 ]
+	then
+		((cores=$cores-1))
+	else
+		cores=1
+	fi
+	echo "cores for make: $cores"
+	make -j$cores all
+	make install
+	ldconfig
+	cd /home/$usrname
+	rm -rf openmpi*
+	mpirun --version
+	read -p "OpenMPI 4.1.0 - Local install finished, press enter to return to menu" input
 }
 
 # 3- Install to run from server
