@@ -23,8 +23,8 @@ install_local()
 	fi
 	echo "cores for make: $cores"
 	make -j$cores all
-	make install
-	ldconfig
+	make install	
+	ldconfig	
 	cd /home/$usrname
 	rm -rf openmpi*
 	mpirun --version
@@ -50,11 +50,12 @@ install_server()
 	echo "cores for make: $cores"
 	make -j$cores all
 	make install
+	echo "/opt/openmpi-4.1.0/lib" >> /etc/ld.so.conf.d/openmpi-4.1.0.conf
 	ldconfig
+	echo "export PATH=$PATH:/opt/openmpi-4.1.0/bin" >> /etc/profile
 	echo "/opt/openmpi-4.1.0 192.168.0.0/255.255.255.0(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
 	cd /home/$usrname
 	rm -rf openmpi*
-	mpirun --version
 	read -p "OpenMPI 4.1.0 - Server install finished, press enter to return to menu" input
 }
 
@@ -66,6 +67,7 @@ install_client()
 	nfsdir=${userdir:="/opt/openmpi-4.1.0"}
 	mkdir $nfsdir
 	echo "pinode$nfsrem.local:$nfsdir $nfsdir    nfs defaults" >> /etc/fstab
+	echo "export PATH=$PATH:/opt/openmpi-4.1.0/bin" >> /etc/profile
 	read -p "OpenMPI 4.1.0 - Client install done, press enter to return to menu" input
 }
 
