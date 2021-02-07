@@ -44,7 +44,7 @@ add_host_to_server()
 }
 
 # 4 - Share server pub key with host
-add_server_to host()
+add_server_to_host()
 {
 	# Setup SSH/ECDSA keys on client
 	read -p "Which node in Pi cluster do you want to share pub key with? - integer only: " clientnum	
@@ -60,7 +60,7 @@ while [ $n != "x" ]; do
 	    1) remove_server_keys;;
 	    2) create_server_keys;;
 	    3) add_host_to_server;;
-	    4) add_server_to host;;
+	    4) add_server_to_host;;
 	    *) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_ssh_key_menu
