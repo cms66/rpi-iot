@@ -27,7 +27,6 @@ sed -i "s/raspberrypi/$piname.local $piname/g" /etc/hosts
 echo "127.0.0.1   $piname.local $piname" >> /etc/hosts
 localip=$(hostname -I | awk '{print $1}')
 echo "$localip   $piname.local $piname" >> /etc/hosts
-echo "# MPI Nodes\n" >> /etc/hosts
 
 # Disable root SSH login
 sed -i 's/#PermitRootLogin\ prohibit-password/PermitRootLogin\ no/g' /etc/ssh/sshd_config
