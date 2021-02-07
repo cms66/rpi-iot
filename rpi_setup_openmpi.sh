@@ -51,16 +51,22 @@ install_server()
 	make -j$cores all
 	make install
 	ldconfig
+	echo "/opt/openmpi-4.1.0 192.168.0.0/255.255.255.0(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
 	cd /home/$usrname
 	rm -rf openmpi*
 	mpirun --version
-	read -p "OpenMPI 4.1.0 - Local install finished, press enter to return to menu" input
+	read -p "OpenMPI 4.1.0 - Server install finished, press enter to return to menu" input
 }
 
 # 3- Install to run from server
 install_client()
 {
-	read -p "OpenMPI 4.0.5 - Client install TODO, press enter to return to menu" input
+	read -p "Remote node (integer only): " nfsrem
+	read -p "Full path to remote directory (press enter for default = /opt/openmpi-4.1.0): " userdir
+	nfsdir=${userdir:="/opt/openmpi-4.1.0"}
+	mkdir $nfsdir
+	echo "pinode$nfsrem.local:$nfsdir $nfsdir    nfs defaults" >> /etc/fstab
+	read -p "OpenMPI 4.1.0 - Client install done, press enter to return to menu" input
 }
 
 show_mpi_menu
