@@ -4,7 +4,7 @@ show_ssh_key_menu()
 {
 	clear
 	printf "SSH Private/Public key setup menu \n----------------\n"
-	printf "select setup option or x to exit \n 1) Remove keys on server \n 2) Create keys on server \n 3) Add client \n 4) Add host to Server \n"
+	printf "select setup option or x to exit \n 1) Remove keys on server \n 2) Create keys on server \n 3) Add host to server hosts  \n 4) Add server to host (share user pub key) \n"
 }
 
 # 1- Remove keys on server
@@ -34,7 +34,7 @@ create_server_keys()
 	read -p "Server keys generated for $usrname, press enter to return to menu" input
 }
 
-# 3 - Add client to server hosts file
+# 3 - Add host to server hosts file
 add_host_to_server()
 {
 	# Add host to server hosts file
@@ -43,8 +43,8 @@ add_host_to_server()
 	echo "$clientip  pinode$clientnum.local pinode$clientnum" >> /etc/hosts
 }
 
-# 4 - Share pub key with client
-add_client()
+# 4 - Share server pub key with host
+add_server_to host()
 {
 	# Setup SSH/ECDSA keys on client
 	read -p "Which node in Pi cluster do you want to share pub key with? - integer only: " clientnum	
@@ -59,8 +59,8 @@ while [ $n != "x" ]; do
 	case $n in
 	    1) remove_server_keys;;
 	    2) create_server_keys;;
-	    3) add_client;;
-	    4) add_host_to_server;;
+	    3) add_host_to_server;;
+	    4) add_server_to host;;
 	    *) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_ssh_key_menu
