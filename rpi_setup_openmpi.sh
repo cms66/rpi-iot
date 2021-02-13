@@ -68,6 +68,8 @@ install_client()
 	mkdir $nfsdir
 	echo "pinode$nfsrem.local:$nfsdir $nfsdir    nfs defaults" >> /etc/fstab
 	echo "export PATH=$PATH:/opt/openmpi-4.1.0/bin" >> /etc/profile
+	echo "/opt/openmpi-4.1.0/lib" >> /etc/ld.so.conf.d/openmpi-4.1.0.conf
+	ldconfig
 	read -p "OpenMPI 4.1.0 - Client install done, press enter to return to menu" input
 }
 
