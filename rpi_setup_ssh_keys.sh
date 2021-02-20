@@ -48,8 +48,8 @@ add_server_to_host()
 {
 	# Setup SSH/ECDSA keys on client
 	read -p "Which node in Pi cluster do you want to share pub key with? - integer only: " clientnum	
-	ssh-copy-id -i /home/$usrname/.ssh/id_ecdsa.pub $usrname@pinode$clientnum.local
-	#cat /home/$usrname/.ssh/id_ecdsa.pub | ssh $usrname@pinode$clientnum.local "mkdir -p /home/$usrname/.ssh && chmod 700 /home/$usrname/.ssh && cat >> /home/$usrname/.ssh/authorized_keys"
+	#ssh-copy-id -i /home/$usrname/.ssh/id_ecdsa.pub $usrname@pinode$clientnum.local
+	cat /home/$usrname/.ssh/id_ecdsa.pub | ssh $usrname@pinode$clientnum.local "mkdir -p /home/$usrname/.ssh && chmod 700 /home/$usrname/.ssh && cat >> /home/$usrname/.ssh/authorized_keys"
 	read -p "$usrname@pinode$clientnum.local ($clientip) setup done, press any key to continue" input
 }
 
