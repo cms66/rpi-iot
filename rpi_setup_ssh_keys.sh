@@ -25,9 +25,9 @@ create_server_keys()
 {
 	# Create keys for user
 	mkdir -p /home/$usrname/.ssh
-	ssh-keygen -q -b 521 -t ecdsa -f /home/$usrname/.ssh/id_ecdsa -P ""
+	ssh-keygen -q -b 1024 -t rsa -f /home/$usrname/.ssh/id_rsa -P ""
 	chown -R $usrname.$usrname /home/$usrname/.ssh
-	sed -i "s/root@/$usrname@/g" /home/$usrname/.ssh/id_ecdsa.pub
+	sed -i "s/root@/$usrname@/g" /home/$usrname/.ssh/id_rsa.pub
 	# Modify SSHD config to use created keys
 	echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config
 	echo "HostKey /home/$usrname/.ssh/id_ecdsa" >> /etc/ssh/sshd_config
@@ -48,8 +48,8 @@ add_server_to_host()
 {
 	# Setup SSH/ECDSA keys on client
 	read -p "Which node in Pi cluster do you want to share pub key with? - integer only: " clientnum	
-	#ssh-copy-id -i /home/$usrname/.ssh/id_ecdsa.pub $usrname@pinode$clientnum.local
-	cat /home/$usrname/.ssh/id_ecdsa.pub | ssh $usrname@pinode$clientnum.local "mkdir -p /home/$usrname/.ssh && chmod 700 /home/$usrname/.ssh && cat >> /home/$usrname/.ssh/authorized_keys"
+	ssh-copy-id -i /home/$usrname/.ssh/id_rsa.pub $usrname@pinode$clientnum.local
+	#cat /home/$usrname/.ssh/id_ecdsa.pub | ssh $usrname@pinode$clientnum.local "mkdir -p /home/$usrname/.ssh && chmod 700 /home/$usrname/.ssh && cat >> /home/$usrname/.ssh/authorized_keys"
 	read -p "$usrname@pinode$clientnum.local ($clientip) setup done, press any key to continue" input
 }
 
