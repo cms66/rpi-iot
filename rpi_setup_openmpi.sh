@@ -52,10 +52,10 @@ install_server()
 	make -j$cores all
 	make install
 	echo "/opt/openmpi/lib" >> /etc/ld.so.conf.d/openmpi.conf
-	ldconfig
 	echo "export PATH=$PATH:/opt/openmpi/bin" >> /etc/profile
 	echo "/opt/openmpi 192.168.0.0/255.255.255.0(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
 	exportfs -ra
+	ldconfig
 	cd /home/$usrname
 	rm -rf openmpi*
 	mpirun --version
