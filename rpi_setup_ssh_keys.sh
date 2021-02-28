@@ -4,7 +4,7 @@ show_ssh_key_menu()
 {
 	clear
 	printf "SSH Private/Public key setup menu \n----------------\n"
-	printf "select setup option or x to exit \n 1) Remove keys on server \n 2) Create keys on server \n 3) Add host to server hosts  \n 4) Add server to host (share user pub key) \n"
+	printf "select setup option or x to exit \n 1) Remove keys on server \n 2) Create keys on server \n 3) Add host to server hosts file  \n 4) Add server to host hosts file \n 5) Add server to host (share user pub key) \n"
 }
 
 # 1- Remove keys on server
@@ -31,6 +31,7 @@ create_server_keys()
 	# Modify SSHD config to use created keys
 	echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config
 	echo "HostKey /home/$usrname/.ssh/id_rsa" >> /etc/ssh/sshd_config
+	service sshd restart
 	read -p "Server keys generated for $usrname, press enter to return to menu" input
 }
 
@@ -43,8 +44,17 @@ add_host_to_server()
 	echo "$clientip  pinode$clientnum.local pinode$clientnum" >> /etc/hosts
 }
 
-# 4 - Share server pub key with host
+# 4 - Add server to hosts file on host
 add_server_to_host()
+{
+	# Add server to hosts file on host
+	read -p "What node is the server? - integer only: " servernum
+	read -p "IP address: " serverip
+	echo "$serverip  pinode$servernum.local pinode$servernum" >> /etc/hosts
+}
+
+# 5 - Share server pub key with host
+add_server_key_to_host()
 {
 	# Setup SSH/RSA keys on client
 	read -p "Which node in Pi cluster do you want to share pub key with? - integer only: " clientnum	
@@ -61,6 +71,7 @@ while [ $n != "x" ]; do
 	    2) create_server_keys;;
 	    3) add_host_to_server;;
 	    4) add_server_to_host;;
+	    5) add_server_key_to_host;;
 	    *) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_ssh_key_menu
