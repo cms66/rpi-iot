@@ -4,7 +4,7 @@ show_ssh_key_menu()
 {
 	clear
 	printf "SSH Private/Public key setup menu \n----------------\n"
-	printf "select setup option or x to exit \n 1) Remove keys on server \n 2) Create keys on server \n 3) Add host to server hosts file  \n 4) Add server to host hosts file \n 5) Add server to host (share user pub key) \n"
+	printf "select setup option or x to exit \n 1) Remove keys on server \n 2) Create keys on server \n 3) Add host to hosts file on server  \n 4) Add server to hosts file on host \n 5) Add server to host (share user pub key) \n"
 }
 
 # 1- Remove keys on server
