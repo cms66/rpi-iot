@@ -32,6 +32,7 @@ install_local()
 }
 
 # 2- Build/install on server
+# TODO - Enable working without reboot
 install_server()
 {
 	cd /home/$usrname
@@ -62,6 +63,7 @@ install_server()
 }
 
 # 3- Install to run from server
+# TODO - Enable working without reboot
 install_client()
 {
 	read -p "Remote node (integer only): " nfsrem
