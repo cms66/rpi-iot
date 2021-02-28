@@ -60,6 +60,7 @@ add_server_key_to_host()
 	read -p "Which node in Pi cluster do you want to share pub key with? - integer only: " clientnum	
 	ssh-copy-id -i /home/$usrname/.ssh/id_rsa.pub $usrname@pinode$clientnum.local
 	#cat /home/$usrname/.ssh/id_ecdsa.pub | ssh $usrname@pinode$clientnum.local "mkdir -p /home/$usrname/.ssh && chmod 700 /home/$usrname/.ssh && cat >> /home/$usrname/.ssh/authorized_keys"
+	ssh $usrname@pinode$clientnum.local
 	read -p "$usrname@pinode$clientnum.local ($clientip) setup done, press any key to continue" input
 }
 
