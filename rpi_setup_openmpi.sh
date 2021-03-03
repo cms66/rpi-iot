@@ -71,7 +71,7 @@ install_client()
 	nfsdir=${userdir:="/opt/openmpi"}
 	mkdir $nfsdir
 	echo "pinode$nfsrem.local:$nfsdir $nfsdir    nfs defaults" >> /etc/fstab
-	echo "export PATH=$PATH:/opt/openmpi/bin" >> /etc/profile
+	echo -e "export PATH=$PATH:/opt/openmpi/bin\n$(cat /home/$usrname/.bashrc)" > /home/$usrname/.bashrc
 	echo "/opt/openmpi/lib" >> /etc/ld.so.conf.d/openmpi.conf
 	mount -a
 	ldconfig
