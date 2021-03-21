@@ -100,7 +100,7 @@ setup_gps()
 	sed -i 's/console=serial0,115200 //g' /boot/cmdline.txt
 	echo "pps-gpio" >> /etc/modules
 	echo "enable_uart=1" >> /boot/config.txt
-	echo "dtoverlay=pi3-miniuart-bt" >> /boot/config.txt
+	echo "dtoverlay=miniuart-bt" >> /boot/config.txt
 	echo "dtoverlay=pps-gpio,gpiopin=4" >> /boot/config.txt
 	systemctl enable gpsd
 	read -p "GPS setup done, press enter to return to menu" input
