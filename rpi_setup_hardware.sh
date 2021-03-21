@@ -94,6 +94,7 @@ setup_arduino_i2c()
 setup_gps()
 {
 	apt-get -y install gpsd gpsd-clients python-gps
+	pip3 install gpsd-py3
 	sed -i 's/USBAUTO=\"true\"/USBAUTO=\"false\"/g' /etc/default/gpsd
 	sed -i 's/GPSD_OPTIONS=\"\"/GPSD_OPTIONS=\"-n -G\"/g' /etc/default/gpsd
 	sed -i 's/DEVICES=\"\"/DEVICES=\"\/dev\/serial0\"/g' /etc/default/gpsd
