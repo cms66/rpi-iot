@@ -10,9 +10,9 @@ show_mpi_menu()
 install_local()
 {
 	cd /home/$usrname
-	wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.0.tar.gz
-	tar -xzf openmpi-4.1.0.tar.gz
-	cd openmpi-4.1.0
+	wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.1.tar.gz
+	tar -xzf openmpi-4.1.1.tar.gz
+	cd openmpi-4.1.1
 	./configure
 	cores=$(nproc)
 	if [ $cores -gt 1 ]
@@ -28,7 +28,7 @@ install_local()
 	cd /home/$usrname
 	rm -rf openmpi*
 	mpirun --version
-	read -p "OpenMPI 4.1.0 - Local install finished, press enter to return to menu" input
+	read -p "OpenMPI 4.1.1 - Local install finished, press enter to return to menu" input
 }
 
 # 2- Build/install on server
@@ -37,10 +37,10 @@ install_server()
 {
 	cd /home/$usrname
 	mkdir /opt/openmpi
-	wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.0.tar.gz
-	tar -xzf openmpi-4.1.0.tar.gz
-	cd openmpi-4.1.0
-	./configure --prefix=/opt/openmpi
+	wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.1.tar.gz
+	tar -xzf openmpi-4.1.1.tar.gz
+	cd openmpi-4.1.1
+	./configure
 	cores=$(nproc)
 	if [ $cores -gt 1 ]
 	then
@@ -51,15 +51,13 @@ install_server()
 	echo "cores for make: $cores"
 	make -j$cores all
 	make install
-	echo "/opt/openmpi/lib" >> /etc/ld.so.conf.d/openmpi.conf
-	echo "export PATH=$PATH:/opt/openmpi/bin" >> /etc/profile
-	echo "/opt/openmpi 192.168.0.0/255.255.255.0(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+	echo "/usr/local 192.168.0.0/255.255.255.0(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
 	exportfs -ra
 	ldconfig
 	cd /home/$usrname
 	rm -rf openmpi*
 	mpirun --version
-	read -p "OpenMPI 4.1.0 - Server install finished, press enter to return to menu" input
+	read -p "OpenMPI 4.1.1 - Server install finished, press enter to return to menu" input
 }
 
 # 3- Install to run from server
@@ -67,16 +65,14 @@ install_server()
 install_client()
 {
 	read -p "Remote node (integer only): " nfsrem
-	read -p "Full path to remote directory (press enter for default = /opt/openmpi): " userdir
-	nfsdir=${userdir:="/opt/openmpi"}
+	read -p "Full path to remote directory (press enter for default = /usr/local): " userdir
+	nfsdir=${userdir:="/usr/local"}
 	mkdir $nfsdir
 	echo "pinode$nfsrem.local:$nfsdir $nfsdir    nfs defaults" >> /etc/fstab
-	echo -e "export PATH=$PATH:/opt/openmpi/bin\n$(cat /home/$usrname/.bashrc)" > /home/$usrname/.bashrc
-	echo "/opt/openmpi/lib" >> /etc/ld.so.conf.d/openmpi.conf
 	mount -a
 	ldconfig
 	mpirun --version
-	read -p "OpenMPI 4.1.0 - Client install done, press enter to return to menu" input
+	read -p "OpenMPI 4.1.1 - Client install done, press enter to return to menu" input
 }
 
 show_mpi_menu
