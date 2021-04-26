@@ -1,4 +1,4 @@
-# OpenMPI 4.1.0
+# OpenMPI 4.1.1
 show_mpi_menu()
 {
 	clear
