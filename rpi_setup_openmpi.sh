@@ -36,7 +36,6 @@ install_local()
 install_server()
 {
 	cd /home/$usrname
-	mkdir /opt/openmpi
 	wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.1.tar.gz
 	tar -xzf openmpi-4.1.1.tar.gz
 	cd openmpi-4.1.1
