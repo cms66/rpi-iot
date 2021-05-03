@@ -13,8 +13,8 @@ apt-get -y update
 apt-get -y upgrade
 #  - System tools + Development
 apt-get -y install python python2.7-dev python3-dev python-pip python3-pip gcc g++ gfortran libraspberrypi-dev libomp-dev git-core build-essential cmake pkg-config make screen htop stress zip nfs-common
-pip install --upgrade pip
-pip3 install --upgrade pip
+#pip install --upgrade pip
+#pip3 install --upgrade pip
 # TODO - fail2ban ufw
 
 # Configure firewall (ufw)
