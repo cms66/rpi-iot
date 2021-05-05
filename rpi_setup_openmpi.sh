@@ -66,7 +66,7 @@ install_client()
 	read -p "Remote node (integer only): " nfsrem
 	read -p "Full path to remote directory (press enter for default = /usr/local): " userdir
 	nfsdir=${userdir:="/usr/local"}
-	mkdir $nfsdir
+	mkdir -p $nfsdir
 	echo "pinode$nfsrem.local:$nfsdir $nfsdir    nfs defaults" >> /etc/fstab
 	mount -a
 	ldconfig
