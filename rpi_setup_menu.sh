@@ -1,5 +1,7 @@
 # Setup main menu
 # Check/Run other setup scripts
+# TODO
+# - get username from whoami
 
 show_main_menu()
 {
