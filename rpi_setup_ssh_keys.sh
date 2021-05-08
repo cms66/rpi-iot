@@ -58,12 +58,12 @@ add_server_key_to_host()
 {
 	# Setup SSH/RSA keys on client
 	read -p "Which node in Pi cluster do you want to share pub key with? - integer only: " clientnum	
-	ssh-copy-id -i /home/$usrname/.ssh/id_rsa.pub $usrname@pinode$clientnum.local
-	#ssh-copy-id -i /home/$usrname/.ssh/id_rsa.pub $usrname@pinode$clientnum
+	#ssh-copy-id -i /home/$usrname/.ssh/id_rsa.pub $usrname@pinode$clientnum.local
+	ssh-copy-id -i /home/$usrname/.ssh/id_rsa.pub $usrname@pinode$clientnum
 	#cat /home/$usrname/.ssh/id_ecdsa.pub | ssh $usrname@pinode$clientnum.local "mkdir -p /home/$usrname/.ssh && chmod 700 /home/$usrname/.ssh && cat >> /home/$usrname/.ssh/authorized_keys"
-	ssh $usrname@pinode$clientnum.local
-	#ssh $usrname@pinode$clientnum
-	read -p "$usrname@pinode$clientnum.local ($clientip) setup done, press any key to continue" input
+	#ssh $usrname@pinode$clientnum.local
+	ssh $usrname@pinode$clientnum
+	read -p "$usrname@pinode$clientnum ($clientip) setup done, press any key to continue" input
 }
 
 show_ssh_key_menu
