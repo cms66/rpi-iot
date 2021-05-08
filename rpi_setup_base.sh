@@ -31,10 +31,6 @@ echo "$localip   $piname.local $piname" >> /etc/hosts
 # Disable root SSH login
 sed -i 's/#PermitRootLogin\ prohibit-password/PermitRootLogin\ no/g' /etc/ssh/sshd_config
 
-# Enable Wifi - Not needed since stretch-lite build
-#rfkill unblock 0
-#ip link set wlan0 up
-
 # Set default shell to bash
 echo "dash dash/sh boolean false" | debconf-set-selections
 DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
