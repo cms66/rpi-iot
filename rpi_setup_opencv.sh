@@ -2,6 +2,9 @@
 # TODO
 # - Optimisation
 # - Set make cores according to RPi model
+# - menu
+# - client install
+
 cd /home/$usrname
 apt-get -y install libjpeg-dev libpng-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libatlas-base-dev python3-numpy
 wget https://files.pythonhosted.org/packages/3f/d3/ecb4d108f6c1041d24842a345ee0123cd7f366ba75cf122601e856d42ba2/imutils-0.5.4.tar.gz
