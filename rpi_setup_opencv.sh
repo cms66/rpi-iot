@@ -11,6 +11,7 @@ wget https://files.pythonhosted.org/packages/3f/d3/ecb4d108f6c1041d24842a345ee01
 tar -xvzf imutils-0.5.4.tar.gz
 cd imutils-0.5.4
 python3 setup.py install
+ldconfig
 cd /home/$usrname
 rm -rf imutils*
 wget -O opencv.zip https://github.com/opencv/opencv/archive/4.5.2.zip
