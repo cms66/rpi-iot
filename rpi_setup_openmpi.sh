@@ -1,4 +1,4 @@
-# OpenMPI 4.1.1
+# OpenMPI 4.1.2
 show_mpi_menu()
 {
 	clear
@@ -10,9 +10,9 @@ show_mpi_menu()
 install_local()
 {
 	cd /home/$usrname
-	wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.1.tar.gz
-	tar -xzf openmpi-4.1.1.tar.gz
-	cd openmpi-4.1.1
+	wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz
+	tar -xzf openmpi-4.1.2.tar.gz
+	cd openmpi-4.1.2
 	./configure
 	cores=$(nproc)
 	if [ $cores -gt 1 ]
@@ -28,7 +28,7 @@ install_local()
 	cd /home/$usrname
 	rm -rf openmpi*
 	mpirun --version
-	read -p "OpenMPI 4.1.1 - Local install finished, press enter to return to menu" input
+	read -p "OpenMPI 4.1.2 - Local install finished, press enter to return to menu" input
 }
 
 # 2- Build/install on server
@@ -36,9 +36,9 @@ install_local()
 install_server()
 {
 	cd /home/$usrname
-	wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.1.tar.gz
-	tar -xzf openmpi-4.1.1.tar.gz
-	cd openmpi-4.1.1
+	wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz
+	tar -xzf openmpi-4.1.2.tar.gz
+	cd openmpi-4.1.2
 	./configure
 	cores=$(nproc)
 	if [ $cores -gt 1 ]
@@ -56,7 +56,7 @@ install_server()
 	cd /home/$usrname
 	rm -rf openmpi*
 	mpirun --version
-	read -p "OpenMPI 4.1.1 - Server install finished, press enter to return to menu" input
+	read -p "OpenMPI 4.1.2 - Server install finished, press enter to return to menu" input
 }
 
 # 3- Install to run from server
@@ -71,7 +71,7 @@ install_client()
 	mount -a
 	ldconfig
 	mpirun --version
-	read -p "OpenMPI 4.1.1 - Client install done, press enter to return to menu" input
+	read -p "OpenMPI 4.1.2 - Client install done, press enter to return to menu" input
 }
 
 show_mpi_menu
