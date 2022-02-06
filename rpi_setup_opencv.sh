@@ -22,7 +22,7 @@ unzip opencv_contrib.zip
 #pip3 install numpy imutils
 mkdir /home/$usrname/opencv-4.5.5/build
 cd /home/$usrname/opencv-4.5.5/build
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_PYTHON_EXAMPLES=OFF -D ENABLE_NEON=ON -D ENABLE_VFPV3=ON -D OPENCV_ENABLE_NONFREE=ON -D OPENCV_EXTRA_MODULES_PATH=/home/$usrname/opencv_contrib-4.5.2/modules -D BUILD_EXAMPLES=OFF ..
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_PYTHON_EXAMPLES=OFF -D ENABLE_NEON=ON -D ENABLE_VFPV3=ON -D OPENCV_ENABLE_NONFREE=ON -D OPENCV_EXTRA_MODULES_PATH=/home/$usrname/opencv_contrib-4.5.5/modules -D BUILD_EXAMPLES=OFF ..
 sed -i "s/CONF_SWAPSIZE=100/CONF_SWAPSIZE=2048/g" /etc/dphys-swapfile
 /etc/init.d/dphys-swapfile restart
 cores=$(nproc)
