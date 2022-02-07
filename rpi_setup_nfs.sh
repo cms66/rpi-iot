@@ -23,7 +23,7 @@ setup_local_server()
 	exportfs -ra
 	mount -a
 	#ufw allow NFS
-	read -p "NFS Server setup done, press enter to return to menu" input
+	read -p "NFS Server setup done, press any key to return to menu" input
 }
 
 # Add local export
