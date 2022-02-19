@@ -1,6 +1,8 @@
 # First boot - Base setup
 # SSH login as pi/raspberry
 # sudo run this script
+# TODO
+# - Rebuild local.tgz without python2
 
 # setup users and passwords
 echo "Setting up security for root account and creating new user to replace the default pi user"
