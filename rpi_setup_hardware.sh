@@ -90,9 +90,10 @@ setup_arduino_usb()
 	wget -O arduino-cli.tar.gz https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_ARMv7.tar.gz
 	tar -xvzf arduino-cli.tar.gz -C /usr/bin
 	rm arduino-cli.tar.gz
-	# Show info
+	# Show info - works
 	arduino-cli version
 	arduino-cli config dump
+	
 	# Setup
 	arduino-cli core update-index
 	arduino-cli board list
