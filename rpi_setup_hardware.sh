@@ -82,7 +82,7 @@ calib_sense_hat()
 # TODO
 # - arduino-cli from source not binary
 # - Configure paths
-# Check for boards
+# - Check for boards
 setup_arduino_usb()
 {
 	usermod -a -G dialout $usrname
@@ -90,7 +90,17 @@ setup_arduino_usb()
 	wget -O arduino-cli.tar.gz https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_ARMv7.tar.gz
 	tar -xvzf arduino-cli.tar.gz -C /usr/bin
 	rm arduino-cli.tar.gz
+	# Show info
 	arduino-cli version
+	arduino-cli config dump
+	# Setup
+	arduino-cli core update-index
+	arduino-cli board list
+	
+	# Arduino Micro test
+	arduino-cli core install arduino:avr
+	arduino-cli core list
+	
 	read -p "Arduino USB setup done, press enter to return to menu" input
 }
 
