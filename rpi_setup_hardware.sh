@@ -31,7 +31,10 @@ setup_cam_csi()
 	read -p "CSI camera setup done, press enter to return to menu" input	
 }
 
-# 2 USB Camera - Works - requires reboot
+# 2 USB Camera
+# TODO
+# - Test without CSI cam install
+# - Test for existing CSI/USB install
 setup_cam_usb()
 {
 	# grant access to camera for video group + add user to group
@@ -79,7 +82,8 @@ calib_sense_hat()
 setup_arduino_usb()
 {
 	usermod -a -G dialout $usrname
-	apt-get -y install arduino-core-avr arduino-cli avrdude pyserial
+	apt-get -y install arduino-core-avr avrdude python3-serial
+	wget -O arduino-cli.tar.gz https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_ARMv7.tar.gz
 	read -p "Arduino USB setup done, press enter to return to menu" input
 }
 
