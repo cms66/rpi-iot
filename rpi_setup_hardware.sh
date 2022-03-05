@@ -81,12 +81,16 @@ calib_sense_hat()
 # 5 Arduino - USB - Works
 # TODO
 # - arduino-cli from source not binary
+# - Configure paths
+# Check for boards
 setup_arduino_usb()
 {
 	usermod -a -G dialout $usrname
 	apt-get -y install arduino-core-avr avrdude python3-serial
 	wget -O arduino-cli.tar.gz https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_ARMv7.tar.gz
 	tar -xvzf arduino-cli.tar.gz -C /usr/bin
+	rm arduino-cli.tar.gz
+	arduino-cli version
 	read -p "Arduino USB setup done, press enter to return to menu" input
 }
 
