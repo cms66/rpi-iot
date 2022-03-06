@@ -3,7 +3,8 @@
 # - Optimisation
 # - Set make cores according to RPi model
 # - menu
-# - client install
+# - client install - install from share dir
+# - server install - build in share dir
 
 cd /home/$usrname
 apt-get -y install python3-numpy libjpeg-dev libtiff-dev libgif-dev libgstreamer1.0-dev gstreamer1.0-gtk3 libgstreamer-plugins-base1.0-dev gstreamer1.0-gl libavcodec-dev libavformat-dev libswscale-dev libgtk2.0-dev libcanberra-gtk* libxvidcore-dev libx264-dev libgtk-3-dev libtbb2 libtbb-dev libdc1394-22-dev libv4l-dev libopenblas-dev libatlas-base-dev libblas-dev libjasper-dev liblapack-dev libhdf5-dev protobuf-compiler
