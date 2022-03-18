@@ -9,7 +9,7 @@ These instructions assume:
  - Windows computer used for preparation and connection to RPi.
  - Headless build (i.e no monitor/keyboard connected) so setup via ssh.
 ### Prepare SD card
- - Download latest lite image from https://www.raspberrypi.org/downloads/raspbian/
+ - Download latest lite image from https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit
  - Unzip and write image to micro SD card (8 GB minimum, 16 GB recommended and Class 10) with win32diskimager (https://sourceforge.net/projects/win32diskimager/)
  - If a second drive is shown (Secure Digital storage device) or "format partition" message popup then
      - DO NOT click OK to format SD card
