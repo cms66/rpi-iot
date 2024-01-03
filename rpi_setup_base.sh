@@ -1,31 +1,20 @@
 # First boot - Base setup
-# SSH login as pi/raspberry
-# sudo run this script
+# Assumes
+# - rpi imager used to configure user/hostname
+# - login as created user and download/extract from github
+# Run this script as created user from home directory
 # TODO
 # - Rebuild local.tgz with more generic structure
 
-# setup users and passwords
-echo "Setting up security for root account and creating new user to replace the default pi user"
-echo "set password for root"
-passwd root
-# Add user with home direcory, bash shell and sudo access
-echo "Create user"
-read -p "Full Name: " fname
-read -p "User Name: " usrname
-useradd -m -s /bin/bash -G sudo -c "$fname" $usrname
-# set password for created user
-passwd $usrname
-# create local folder structure for created user
-echo "Creating local folders for $usrname"
-tar -xvzf /boot/local.tgz -C /home/$usrname/
+read -p "Username for setup (you are running as root): " usrname
+# create local folder structure for created user with code examples
+tar -xvzf local.tgz
 # copy build scripts to local folder + set owner to created user
-cp /boot/rpi_*.sh /home/$usrname/local/src/shell
-chown -R $usrname.$usrname /home/$usrname/local/
+mv ./rpi_*.sh /home/$usrname/local/src/shell
+chown -R $usrname:$usrname /home/$usrname/local/
 
 # Networking
-read -p "Networking - Hostname for RPi (e.g. pinode1): " piname
-echo $piname > /etc/hostname
-sed -i "s/raspberrypi/$piname.local $piname/g" /etc/hosts
+piname=$(hostname)
 echo "127.0.0.1   $piname.local $piname" >> /etc/hosts
 localip=$(hostname -I | awk '{print $1}')
 echo "$localip   $piname.local $piname" >> /etc/hosts
