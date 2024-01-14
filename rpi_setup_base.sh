@@ -6,7 +6,8 @@
 # TODO
 # - Rebuild local.tgz with more generic structure
 
-read -p "Username for setup (you are running as root): " usrname
+#read -p "Username for setup (you are running as root): " usrname
+usrname=$(logname)
 # create local folder structure for created user with code examples
 tar -xvzf /boot/firmware/local.tgz -C /home/$usrname
 #rm local.tgz
