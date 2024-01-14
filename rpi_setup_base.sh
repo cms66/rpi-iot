@@ -14,6 +14,8 @@ tar -xvzf /boot/firmware/local.tgz -C /home/$usrname
 mv /boot/firmware/rpi_*.sh /home/$usrname/local/src/shell
 mv /boot/firmware/nfs-export.tgz /home/$usrname/local/src/shell
 chown -R $usrname:$usrname /home/$usrname/local/
+# Add bash alias for setup menu
+echo "alias mysetup=\"sudo sh /home/$usrname/local/src/shell/rpi_setup_menu.sh\"" >> /home/$usrname/.bashrc
 
 # Networking
 piname=$(hostname)
