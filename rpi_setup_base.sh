@@ -8,7 +8,7 @@
 
 read -p "Username for setup (you are running as root): " usrname
 # create local folder structure for created user with code examples
-tar -xvzf local.tgz
+tar -xvzf local.tgz -C /home/$usrname
 # copy build scripts to local folder + set owner to created user
 mv ./rpi_*.sh /home/$usrname/local/src/shell
 chown -R $usrname:$usrname /home/$usrname/local/
