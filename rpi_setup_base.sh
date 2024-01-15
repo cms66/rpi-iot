@@ -11,7 +11,7 @@ usrname=$(logname)
 # create local folder structure for created user with code examples
 tar -xvzf /boot/firmware/local.tgz -C /home/$usrname
 #rm local.tgz
-# copy build scripts to local folder + set owner to created user
+# copy build scripts  to local folder + set owner to created user
 mv /boot/firmware/rpi_*.sh /home/$usrname/local/src/shell
 mv /boot/firmware/nfs-export.tgz /home/$usrname/local/src/shell
 chown -R $usrname:$usrname /home/$usrname/local/
