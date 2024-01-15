@@ -5,20 +5,12 @@ More detailed instructions and information about the project are available [here
 
 ## Quick instructions
 These instructions assume:
+ - OS version is bookworm
  - Following a naming convention of pinodeX (X = integer, unique for each RPi node in a cluster).
  - Windows computer used for preparation and connection to RPi.
  - Headless build (i.e no monitor/keyboard connected) so setup via ssh.
 ### Prepare SD card
- - Download latest lite image from https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit
- - Unzip and write image to micro SD card (8 GB minimum, 16 GB recommended and Class 10) with win32diskimager (https://sourceforge.net/projects/win32diskimager/)
- - If a second drive is shown (Secure Digital storage device) or "format partition" message popup then
-     - DO NOT click OK to format SD card
-     - Remove drive letter. Download and run MiniTool Partition Wizard (https://www.partitionwizard.com/download/v11/pw11-free.exe). Select the second drive and right click then select hide partition (= remove drive letter)
- - Rename SD card volume to PINODE + node number.
- - Download https://github.com/cms66/rpi-iot/archive/master.zip and extract files.
- - If the RPi will be using WiFi then edit wpa_supplicant.conf with a plain text editor (Notepad or Notepad++ from https://notepad-plus-plus.org/downloads/).
- - Copy the files to SD card (only copy wpa_supplicant.conf if using WiFi rather than a wired connection). Just the files should be copied, not the rpi-iot folder.
-
+ - Use Raspberry Pi Imager
 ### First boot
  - Connect required hardware + boot (wait for power only LED)
      - USB devices (e.g. robotic Arm) should be powered off during boot
@@ -28,8 +20,9 @@ These instructions assume:
     If you want a GUI:
      - Angry IP Scanner (https://sourceforge.net/projects/ipscan/files/latest/download), or if setting up a static IP then
      - Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address (doesn't always pick up raspberrypi.local hostname but shows as Manufacturer = Raspberry Pi Foundation).
- - Login via ssh as the user created during imaging and run base setup script as root
-<pre><code>sudo sh /boot/firmware/rpi_setup_base.sh</code></pre>
+ - Login via ssh as the user created during imaging and download this Repo
+<pre><code>git clone https://github.com/cms66/rpi-iot.git
+sudo sh rpi_setuo_base.sh</code></pre>
   - Select option to apply changes
       - Poweroff (recommended for multiple RPi scenario) to setup a static/reserved IP address on router (using MAC address noted earlier) or
       - Reboot (simple setup for a single RPi)
