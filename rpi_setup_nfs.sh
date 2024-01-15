@@ -15,15 +15,15 @@ show_nfs_menu()
 setup_local_server()
 {
 	apt-get -y install nfs-kernel-server
-	tar -xvzf /boot/nfs-export.tgz -C /var/
+	tar -xvzf nfs-export.tgz -C /var/
 	mkdir /home/$usrname/share$pinum
-	chown $usrname.$usrname /home/$usrname/share$pinum
+	chown $usrname:$usrname /home/$usrname/share$pinum
 	echo "/var/nfs-export 192.168.0.0/255.255.255.0(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
 	echo "/var/nfs-export /home/$usrname/share$pinum    none	bind	0	0" >> /etc/fstab
 	exportfs -ra
 	mount -a
 	#ufw allow NFS
-	read -p "NFS Server setup done, press enter to return to menu" input
+	read -p "NFS Server setup done, press any key to return to menu" input
 }
 
 # Add local export
@@ -39,8 +39,8 @@ add_remote_mount()
 	read -p "Full path to remote directory (press enter for default = /var/nfs-export): " userdir
 	nfsdir=${userdir:="/var/nfs-export"}
 	mkdir /home/$usrname/share$nfsrem
-	chown $usrname.$usrname /home/$usrname/share$nfsrem
-	echo "pinode$nfsrem.local:$nfsdir /home/$usrname/share$nfsrem    nfs defaults" >> /etc/fstab
+	chown $usrname:$usrname /home/$usrname/share$nfsrem
+	echo "pinode$nfsrem.local:$nfsdir /home/$usrname/share$nfsrem    nfs defaults,user,exec,noauto,x-systemd.automount 0 0" >> /etc/fstab
 	mount -a
 	read -p "NFS remote mount done, press enter to return to menu" input
 }

@@ -16,21 +16,25 @@ show_hardware_menu()
 # 1 CSI Camera - Works - requires reboot
 setup_cam_csi()
 {
-	# Enable Camera
+	# Enable legacy camera
+	sed -i 's/camera_auto_detect=1/#camera_auto_detect=1/g' /boot/config.txt
 	echo "start_x=1" >> /boot/config.txt
 	# grant access to camera for video group + add user to group
 	echo 'SUBSYSTEM=="vchiq",GROUP="video",MODE="0660"' > /etc/udev/rules.d/10-vchiq-permissions.rules
 	usermod -a -G video $usrname
-	apt-get -y install python-picamera python3-picamera v4l-utils
+	apt-get -y install v4l-utils python3-picamera
 	# Set firewall rule - assumes pinodeX numbering with port 8080 + node number e.g pinode1 = port 8081
-	hname=$(hostname)
-	fport=$(((${hname//[^0-9]/}) + 8080))
-	ufw allow $fport
+	#hname=$(hostname)
+	#fport=$(((${hname//[^0-9]/}) + 8080))
+	#ufw allow $fport
 	
 	read -p "CSI camera setup done, press enter to return to menu" input	
 }
 
-# 2 USB Camera - Works - requires reboot
+# 2 USB Camera
+# TODO
+# - Test without CSI cam install
+# - Test for existing CSI/USB install
 setup_cam_usb()
 {
 	# grant access to camera for video group + add user to group
@@ -52,7 +56,7 @@ setup_sense_hat()
 {
 	apt-get -y install sense-hat i2c-tools
 	sed -i 's/#dtparam=i2c_arm=on/dtparam=i2c_arm=on/g' /boot/config.txt
-	usermod -a -G i2c,input,video $usrname
+	usermod -a -G i2c,input $usrname
 	# Install cli calibration
 	wget -O RTIMULib.zip https://github.com/RPi-Distro/RTIMULib/archive/master.zip
 	unzip RTIMULib.zip
@@ -75,12 +79,29 @@ calib_sense_hat()
 }
 
 # 5 Arduino - USB - Works
+# TODO
+# - arduino-cli from source not binary
+# - Configure paths
+# - Check for boards
 setup_arduino_usb()
 {
 	usermod -a -G dialout $usrname
-	pip install pyserial
-	pip3 install pyserial
-	apt-get -y install arduino-core arduino-mk
+	apt-get -y install arduino-core-avr avrdude python3-serial
+	wget -O arduino-cli.tar.gz https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_ARMv7.tar.gz
+	tar -xvzf arduino-cli.tar.gz -C /usr/bin
+	rm arduino-cli.tar.gz
+	# Show info - works
+	arduino-cli version
+	arduino-cli config dump
+	
+	# Setup
+	arduino-cli core update-index
+	arduino-cli board list
+	
+	# Arduino Micro test
+	arduino-cli core install arduino:avr
+	arduino-cli core list
+	
 	read -p "Arduino USB setup done, press enter to return to menu" input
 }
 
