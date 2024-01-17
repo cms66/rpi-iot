@@ -10,12 +10,11 @@
 #read -p "Username for setup (you are running as root): " usrname
 usrname=$(logname)
 # create local folder structure for created user with code examples
-tar -xvzf /home/$usrname/rpi-iot/local.tgz -C /home/$usrname
-#rm local.tgz
+tar -xvzf /boot/firmware/local.tgz -C /home/$usrname
 # move build scripts  to local folder + set owner to created user
-#mv /home/$usrname/rpi_*.sh /home/$usrname/local/src/shell
-#mv /home/$usrname/nfs-export.tgz /home/$usrname/local/src/shell
-mv -R /home/$usrname/rpi-iot /home/$usrname/local/src/shell/
+mkdir /home/$usrname/local/src/shell/rpi-iot
+mv /boot/firmware/rpi_*.sh /home/$usrname/local/src/shell/rpi-iot
+mv /boot/firmware/*.tgz /home/$usrname/local/src/shell/rpi-iot
 chown -R $usrname:$usrname /home/$usrname/local/
 # Add bash alias for setup menu
 echo "alias mysetup=\"sudo sh ~/local/src/shell/rpi-iot/rpi_setup_menu.sh\"" >> /home/$usrname/.bashrc
