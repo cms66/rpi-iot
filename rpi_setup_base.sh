@@ -1,8 +1,9 @@
 # First boot - Base setup
 # Assumes
 # - rpi imager used to configure user/hostname
-# - login as created user and download/extract from github
-# Run this script as created user from home directory
+# - login as created user and download from github
+# git clone https://github.com/cms66/rpi-iot.git
+# Sudo run this script as created user from home directory
 # TODO
 # - Rebuild local.tgz with more generic structure
 
