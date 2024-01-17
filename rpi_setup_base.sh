@@ -1,20 +1,18 @@
 # First boot - Base setup
 # Assumes
 # - rpi imager used to configure user/hostname
-# - login as created user and download from github
-# git clone https://github.com/cms66/rpi-iot.git
-# Sudo run this script as created user from home directory
+# Sudo run this script as created user
 # TODO
 # - Rebuild local.tgz with more generic structure
 
-#read -p "Username for setup (you are running as root): " usrname
 usrname=$(logname)
 # create local folder structure for created user with code examples
 tar -xvzf /boot/firmware/local.tgz -C /home/$usrname
-# move build scripts  to local folder + set owner to created user
-mkdir /home/$usrname/local/src/shell/rpi-iot
-mv /boot/firmware/rpi_*.sh /home/$usrname/local/src/shell/rpi-iot
-mv /boot/firmware/*.tgz /home/$usrname/local/src/shell/rpi-iot
+# Move build scripts to hidden local folder
+#mkdir /home/$usrname/local/src/shell/rpi-iot
+mkdir /home/$usrname/.pisetup
+mv /boot/firmware/rpi_*.sh /home/$usrname/.pisetup
+mv /boot/firmware/*.tgz /home/$usrname/.pisetup
 chown -R $usrname:$usrname /home/$usrname/local/
 # Add bash alias for setup menu
 echo "alias mysetup=\"sudo sh ~/local/src/shell/rpi-iot/rpi_setup_menu.sh\"" >> /home/$usrname/.bashrc
