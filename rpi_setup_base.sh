@@ -14,9 +14,9 @@ mkdir /home/$usrname/.pisetup
 mv /boot/firmware/rpi_*.sh /home/$usrname/.pisetup
 mv /boot/firmware/*.tgz /home/$usrname/.pisetup
 chown -R $usrname:$usrname /home/$usrname/local/
-# Add bash alias for setup menu
-echo "alias mysetup=\"sudo sh ~/local/src/shell/rpi-iot/rpi_setup_menu.sh\"" >> /home/$usrname/.bashrc
-echo "alias mytest=\"sudo sh ~/local/src/shell/rpi-iot/rpi_test_menu.sh\"" >> /home/$usrname/.bashrc
+# Add bash alias for setup and test menu
+echo "alias mysetup=\"sudo sh ~/.pisetup/rpi_setup_menu.sh\"" >> /home/$usrname/.bashrc
+echo "alias mytest=\"sudo sh ~/.pisetup/rpi_test_menu.sh\"" >> /home/$usrname/.bashrc
 
 # Networking
 piname=$(hostname)
