@@ -10,15 +10,16 @@
 #read -p "Username for setup (you are running as root): " usrname
 usrname=$(logname)
 # create local folder structure for created user with code examples
-tar -xvzf /home/$usrname/local.tgz -C /home/$usrname
-rm local.tgz
+tar -xvzf /home/$usrname/rpi-iot/local.tgz -C /home/$usrname
+#rm local.tgz
 # move build scripts  to local folder + set owner to created user
-mv /home/$usrname/rpi_*.sh /home/$usrname/local/src/shell
-mv /home/$usrname/nfs-export.tgz /home/$usrname/local/src/shell
+#mv /home/$usrname/rpi_*.sh /home/$usrname/local/src/shell
+#mv /home/$usrname/nfs-export.tgz /home/$usrname/local/src/shell
+mv -R /home/$usrname/rpi-iot /home/$usrname/local/src/shell/
 chown -R $usrname:$usrname /home/$usrname/local/
 # Add bash alias for setup menu
-echo "alias mysetup=\"sudo sh /home/$usrname/local/src/shell/rpi_setup_menu.sh\"" >> /home/$usrname/.bashrc
-echo "alias mytest=\"sudo sh /home/$usrname/local/src/shell/rpi_test_menu.sh\"" >> /home/$usrname/.bashrc
+echo "alias mysetup=\"sudo sh /home/$usrname/local/src/shell/rpi-iot/rpi_setup_menu.sh\"" >> /home/$usrname/.bashrc
+echo "alias mytest=\"sudo sh /home/$usrname/local/src/shell/rpi-iot/rpi_test_menu.sh\"" >> /home/$usrname/.bashrc
 
 # Networking
 piname=$(hostname)
