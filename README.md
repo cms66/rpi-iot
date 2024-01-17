@@ -22,20 +22,20 @@ These instructions assume:
      - Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address (doesn't always pick up raspberrypi.local hostname but shows as Manufacturer = Raspberry Pi Foundation).
  - Login via ssh as the user created during imaging and download this Repo
 <pre><code>git clone https://github.com/cms66/rpi-iot.git
-sudo sh rpi_setuo_base.sh</code></pre>
+sudo sh rpi-iot/rpi_setuo_base.sh</code></pre>
   - Select option to apply changes
       - Poweroff (recommended for multiple RPi scenario) to setup a static/reserved IP address on router (using MAC address noted earlier) or
       - Reboot (simple setup for a single RPi)
 
 ### Main setup
  - Login via ssh (created user/password) and run setup menu script as root
-<pre><code>sudo sh local/src/shell/rpi_setup_menu.sh</code></pre>
+<pre><code>mysetup</code></pre>
  - Run System setup to remove default pi user, update system + install system/development tools
  - Run Hardware setup and use sub menu to setup connected devices (multiple devices can be configured, but reboot will be needed to apply changes)
  - Run NFS setup to configure server or client (required for OpenMPI)
 
 ### Testing
  - Hardware can be tested in various languages using the test menu
- <pre><code>sh local/src/shell/rpi_test_menu.sh</code></pre>
+ <pre><code>mytest</code></pre>
  - Not all device/language combinations will be available.
  - If using WiFi you can modify your networks/details by creating an updated wpa_supplicant.conf file and copying to SD card from Windows. On next boot of the RPi, the new configuration file will be moved to replace the existing configuration file and should connect to the new or modified network.
