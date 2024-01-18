@@ -7,7 +7,7 @@
 
 usrname=$(logname)
 # create local folder structure for created user with code examples
-tar -xvzf /boot/firmware/local.tgz -C /home/$usrname
+tar -xvzf /boot/firmware/rpi-iot-master/local.tgz -C /home/$usrname
 # Move build scripts to hidden local folder
 mkdir /home/$usrname/.pisetup
 mv /boot/firmware/rpi-iot-master/* /home/$usrname/.pisetup
