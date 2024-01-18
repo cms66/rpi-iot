@@ -11,6 +11,7 @@ tar -xvzf /boot/firmware/rpi-iot-master/local.tgz -C /home/$usrname
 # Move build scripts to hidden local folder
 mkdir /home/$usrname/.pisetup
 mv /boot/firmware/rpi-iot-master/* /home/$usrname/.pisetup
+chown -R $usrname:$usrname /home/$usrname/.pisetup
 chown -R $usrname:$usrname /home/$usrname/local/
 # Add bash alias for setup and test menu
 echo "alias mysetup=\"sudo sh ~/.pisetup/rpi_setup_menu.sh\"" >> /home/$usrname/.bashrc
