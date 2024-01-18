@@ -12,7 +12,7 @@ These instructions assume:
 ### Prepare SD card
  - Use Raspberry Pi Imager
  - Download/extract this Repo
- - Copy files (not folder) to SD card drive labelled "bootfs"
+ - Copy folder "rpi-iot-master" to SD card drive labelled "bootfs"
 ### First boot
  - Connect required hardware + boot (wait for power only LED)
      - USB devices (e.g. robotic Arm) should be powered off during boot
@@ -23,7 +23,7 @@ These instructions assume:
      - Angry IP Scanner (https://sourceforge.net/projects/ipscan/files/latest/download), or if setting up a static IP then
      - Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address (doesn't always pick up raspberrypi.local hostname but shows as Manufacturer = Raspberry Pi Foundation).
  - Login via ssh as the user created during imaging and download this Repo
-<pre><code>sudo sh /boot/firmware/rpi_setup_base.sh</code></pre>
+<pre><code>sudo sh /boot/firmware/rpi-iot-master/rpi_setup_base.sh</code></pre>
   - Select option to apply changes
       - Poweroff (recommended for multiple RPi scenario) to setup a static/reserved IP address on router (using MAC address noted earlier) or
       - Reboot (simple setup for a single RPi)
