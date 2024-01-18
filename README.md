@@ -13,6 +13,7 @@ These instructions assume:
  - Use Raspberry Pi Imager
  - Download/extract this Repo
  - Copy folder "rpi-iot-master" to SD card drive labelled "bootfs"
+ - (optional) right click on SD card drive labelled "bootfs" and rename to hostname (e.g.pinodeX)
 ### First boot
  - Connect required hardware + boot (wait for power only LED)
      - USB devices (e.g. robotic Arm) should be powered off during boot
