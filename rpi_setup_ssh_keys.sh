@@ -4,7 +4,7 @@ show_ssh_key_menu()
 {
 	clear
 	printf "SSH Private/Public key setup menu \n----------------\n"
-	printf "select setup option or x to exit \n 1) Remove keys on server \n 2) Create keys on server \n 3) Add host to hosts file on server  \n 4) Add server to hosts file on host \n 5) Add server to host (share user pub key) \n"
+	printf "select setup option or x to exit \n 1) Remove keys on server \n 2) Create keys on server \n 3) Add host to hosts file on server  \n 4) Add server to hosts file on host \n 5) Add server to host (share user pub key) \n 6) Remove known host \n"
 }
 
 # 1- Remove keys on server
@@ -66,6 +66,13 @@ add_server_key_to_host()
 	read -p "$usrname@pinode$clientnum ($clientip) setup done, press any key to continue" input
 }
 
+# 6 - Remove old root known)hosts for host
+remove_known_host()
+{
+	read -p "Which node in Pi cluster do you want to remove from known_hosts? - integer only: " clientnum
+	sudo ssh-keygen -f "/root/.ssh/known_hosts" -R "pinode$clientnum.local"
+}
+
 show_ssh_key_menu
 read -p "Select option or x to exit to main menu: " n
 while [ $n != "x" ]; do
@@ -75,6 +82,7 @@ while [ $n != "x" ]; do
 	    3) add_host_to_server;;
 	    4) add_server_to_host;;
 	    5) add_server_key_to_host;;
+	    6) remove_known_host;;
 	    *) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_ssh_key_menu
