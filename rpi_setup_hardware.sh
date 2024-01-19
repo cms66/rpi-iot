@@ -17,12 +17,13 @@ show_hardware_menu()
 setup_cam_csi()
 {
 	# Enable legacy camera
-	sed -i 's/camera_auto_detect=1/#camera_auto_detect=1/g' /boot/config.txt
-	echo "start_x=1" >> /boot/config.txt
+	#sed -i 's/camera_auto_detect=1/#camera_auto_detect=1/g' /boot/config.txt
+	#echo "start_x=1" >> /boot/config.txt
 	# grant access to camera for video group + add user to group
-	echo 'SUBSYSTEM=="vchiq",GROUP="video",MODE="0660"' > /etc/udev/rules.d/10-vchiq-permissions.rules
-	usermod -a -G video $usrname
-	apt-get -y install v4l-utils python3-picamera
+	#echo 'SUBSYSTEM=="vchiq",GROUP="video",MODE="0660"' > /etc/udev/rules.d/10-vchiq-permissions.rules
+	#usermod -a -G video $usrname
+	apt-get -y install v4l-utils
+ 	apt-get -y install python3-picamera --no-install-recommends
 	# Set firewall rule - assumes pinodeX numbering with port 8080 + node number e.g pinode1 = port 8081
 	#hname=$(hostname)
 	#fport=$(((${hname//[^0-9]/}) + 8080))
