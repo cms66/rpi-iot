@@ -41,7 +41,7 @@ add_remote_mount()
 	mkdir /home/$usrname/share$nfsrem
 	chown $usrname:$usrname /home/$usrname/share$nfsrem
 	echo "pinode$nfsrem.local:$nfsdir /home/$usrname/share$nfsrem    nfs defaults,user,exec,noauto,x-systemd.automount 0 0" >> /etc/fstab
-	systemctl daemon-reload
+	mount -a
 	read -p "NFS remote mount done, press enter to return to menu" input
 }
 
