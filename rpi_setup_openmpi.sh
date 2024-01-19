@@ -68,7 +68,8 @@ install_client()
 	nfsdir=${userdir:="/usr/local"}
 	mkdir -p $nfsdir
 	echo "pinode$nfsrem.local:$nfsdir $nfsdir    nfs defaults" >> /etc/fstab
-	mount -a
+	#mount -a
+ 	systemctl daemon-reload
 	ldconfig
 	mpirun --version
 	read -p "OpenMPI 4.1.2 - Client install done, press enter to return to menu" input
