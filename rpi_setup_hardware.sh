@@ -199,11 +199,11 @@ setup_arduino_libs()
 # 15 Pressure sensor (MPL3115A2)
 setup_pressure_sensor()
 {
-	apt-get -y install python-smbus python3-smbus i2c-tools
-	usermod -a -G i2c $usrname
-	echo "i2c-bcm2708" >> /etc/modules
+	apt-get -y install python3-smbus i2c-tools
+	#usermod -a -G i2c $usrname
+	#echo "i2c-bcm2708" >> /etc/modules
 	echo "i2c-dev" >> /etc/modules
-	sed -i 's/#dtparam=i2c_arm=on/dtparam=i2c_arm=on/g' /boot/config.txt
+	sed -i 's/#dtparam=i2c_arm=on/dtparam=i2c_arm=on/g' /boot/firmware/config.txt
 	read -p "Pressure sensor setup done, press enter to return to menu" input
 }
 
