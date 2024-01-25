@@ -6,8 +6,8 @@ apt-get -y upgrade
 #  - System tools + Development
 apt-get -y install python3-dev gcc g++ gfortran libraspberrypi-dev libomp-dev git-core build-essential cmake pkg-config make screen htop stress zip nfs-common
 
-# - Create python Virtual Environment and bash alias for activation
-python -m venv /home/$usrname/.venv
+# - Create python Virtual Environment (with access to system level packages) and bash alias for activation
+python -m venv --system-site-packages /home/$usrname/.venv
 echo "alias myvp=\"source ~/.venv/bin/activate\"" >> /home/$usrname/.bashrc
 chown -R $usrname:$usrname /home/$usrname/.venv
 
