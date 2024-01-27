@@ -217,6 +217,14 @@ setup_i2c()
 	read -p "I2C setup done, a reboot is required to apply changes. press enter to return to menu" input
 }
 
+# 17 PA1010D GPS Setup
+setup_PA1010D()
+{
+	source /home/$usrname/.venv/bin/activate
+ 	python -m pip install pa1010d
+ 	read -p "PA1010D GPS setup done, press enter to return to menu" input
+}
+
 show_hardware_menu
 read -p "Select option or x to exit to main menu: " n
 while [ $n != "x" ]; do
