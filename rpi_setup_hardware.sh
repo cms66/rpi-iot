@@ -56,7 +56,7 @@ setup_sense_hat()
 {
 	apt-get -y install sense-hat
 	#sed -i 's/#dtparam=i2c_arm=on/dtparam=i2c_arm=on/g' /boot/config.txt
-	usermod -a -G i2c,input $usrname
+	#usermod -a -G i2c,input $usrname
 	# Install cli calibration
 	wget -O RTIMULib.zip https://github.com/RPi-Distro/RTIMULib/archive/master.zip
 	unzip RTIMULib.zip
@@ -245,6 +245,7 @@ while [ $n != "x" ]; do
 		14) setup_arduino_libs;;
 		15) setup_pressure_sensor;;
   		16) setup_i2c;;
+    		17) setup_PA1010D;;
 		*) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_hardware_menu
