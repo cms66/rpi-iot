@@ -23,7 +23,7 @@ These instructions assume:
     If you want a GUI:
      - Angry IP Scanner (https://sourceforge.net/projects/ipscan/files/latest/download), or if setting up a static IP then
      - Advanced IP scanner (https://www.advanced-ip-scanner.com/download/Advanced_IP_Scanner_2.5.3850.exe) and make a note of MAC address (doesn't always pick up raspberrypi.local hostname but shows as Manufacturer = Raspberry Pi Foundation).
- - Login via ssh as the user created during imaging and download this Repo
+ - Login via ssh as the user created during imaging and run initial setup
 <pre><code>sudo sh /boot/firmware/rpi-iot-master/rpi_setup_base.sh</code></pre>
   - Select option to apply changes
       - Poweroff (recommended for multiple RPi scenario) to setup a static/reserved IP address on router (using MAC address noted earlier) or
@@ -32,7 +32,7 @@ These instructions assume:
 ### Main setup
  - Login via ssh (created user/password)  and run setup menu (an alias has been created so no need to sudo run)
 <pre><code>mysetup</code></pre>
- - Run System setup to remove default pi user, update system + install system/development tools
+ - Run System setup (once) to update system + install system/development tools
  - Run Hardware setup and use sub menu to setup connected devices (multiple devices can be configured, but reboot will be needed to apply changes)
  - Run NFS setup to configure server or client (required for OpenMPI)
 
