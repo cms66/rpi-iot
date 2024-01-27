@@ -10,7 +10,7 @@ show_hardware_menu()
 {
 	clear
 	printf "Hardware setup menu \n----------"
-	printf "select setup option or x to exit \n 1) CSI Camera \n 2) USB Camera \n 3) Sense Hat \n 4) Calibrate Sense Hat \n 5) Arduino - USB \n 6) Arduino I2C \n 7) GPS \n 8) TFT LCD \n 9) Calibrate display \n 10) Bluetooth \n 11) Robotic arm \n 12) DVB TV Hat \n 13) Audio (for Desktop image) \n 14) Arduino Libraries \n 15) Pressure sensor \n"
+	printf "select setup option or x to exit \n 1) CSI Camera \n 2) USB Camera \n 3) Sense Hat \n 4) Calibrate Sense Hat \n 5) Arduino - USB \n 6) Arduino I2C \n 7) GPS \n 8) TFT LCD \n 9) Calibrate display \n 10) Bluetooth \n 11) Robotic arm \n 12) DVB TV Hat \n 13) Audio (for Desktop image) \n 14) Arduino Libraries \n 15) Pressure sensor \n 16) Setup I2C \n"
 }
 
 # 1 CSI Camera - Works - requires reboot
@@ -54,8 +54,8 @@ setup_cam_usb()
 # 3 Sense Hat - Works - requires reboot
 setup_sense_hat()
 {
-	apt-get -y install sense-hat i2c-tools
-	sed -i 's/#dtparam=i2c_arm=on/dtparam=i2c_arm=on/g' /boot/config.txt
+	apt-get -y install sense-hat
+	#sed -i 's/#dtparam=i2c_arm=on/dtparam=i2c_arm=on/g' /boot/config.txt
 	usermod -a -G i2c,input $usrname
 	# Install cli calibration
 	wget -O RTIMULib.zip https://github.com/RPi-Distro/RTIMULib/archive/master.zip
@@ -199,12 +199,22 @@ setup_arduino_libs()
 # 15 Pressure sensor (MPL3115A2)
 setup_pressure_sensor()
 {
-	apt-get -y install python3-smbus i2c-tools
+	#apt-get -y install python3-smbus i2c-tools
 	#usermod -a -G i2c $usrname
+	#echo "i2c-bcm2708" >> /etc/modules
+	#echo "i2c-dev" >> /etc/modules
+	#sed -i 's/#dtparam=i2c_arm=on/dtparam=i2c_arm=on/g' /boot/firmware/config.txt
+	read -p "Pressure sensor setup done, press enter to return to menu" input
+}
+
+# 16 I2C Setup
+setup_i2c()
+{
+	apt-get -y install python3-smbus i2c-tools
 	#echo "i2c-bcm2708" >> /etc/modules
 	echo "i2c-dev" >> /etc/modules
 	sed -i 's/#dtparam=i2c_arm=on/dtparam=i2c_arm=on/g' /boot/firmware/config.txt
-	read -p "Pressure sensor setup done, press enter to return to menu" input
+	read -p "I2C setup done, a reboot is required to apply changes. press enter to return to menu" input
 }
 
 show_hardware_menu
@@ -226,6 +236,7 @@ while [ $n != "x" ]; do
 		13) setup_audio_desktop;;
 		14) setup_arduino_libs;;
 		15) setup_pressure_sensor;;
+  		16) setup_i2c;;
 		*) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_hardware_menu
